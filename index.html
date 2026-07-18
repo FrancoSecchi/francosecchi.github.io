@@ -1,498 +1,793 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Franco Secchi — Software Engineer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Franco Fabian Secchi — Ingeniero de Software</title>
+<meta name="description" content="Portfolio de Franco Fabian Secchi, ingeniero de software backend con 6+ años de experiencia en eCommerce, mobile y SaaS. Buenos Aires, Argentina." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  /* ===================== Design tokens ===================== */
   :root {
-    --mil:     #4A5240;
-    --mil-dk:  #2E3328;
-    --mil-lt:  #6B7560;
-    --mil-xlt: #8C9680;
-    --sage:    #B5BEA8;
-    --cream:   #F5F4EF;
-    --cream-dk:#ECEAE2;
-    --white:   #FFFFFF;
-    --tan:     #C9B99A;
-    --tan-lt:  #F0EAE0;
-    --text:    #2E3328;
-    --gray-600:#4B5563;
+    --forest: #4b6b5a;
+    --forest-deep: #263a30;
+    --moss: #5f8570;
+    --taupe: #d4b483;
+    --sage: #b8cbb8;
+    --cream: #f6f2e7;
+    --cream-dark: #e7e0cc;
+    --bg: #f6f2e7;
+    --fg: #1e2a24;
+    --muted: #6d7a71;
+    --border: #dcd3bd;
+    --card: #fbf8ef;
+    --secondary: #ece5d0;
+
+    --font-display: "Libre Baskerville", Georgia, serif;
+    --font-sans: "IBM Plex Sans", system-ui, -apple-system, Segoe UI, sans-serif;
+    --radius: 0.75rem;
+    --max: 1200px;
   }
+
+  /* ===================== Base ===================== */
+  *, *::before, *::after { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--cream); line-height: 1.6; }
-
-  /* NAV */
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(245,244,239,0.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--cream-dk); padding: 0 5%; display: flex; align-items: center; justify-content: space-between; height: 64px; }
-  .nav-logo { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--mil-dk); text-decoration: none; }
-  .nav-links { display: flex; gap: 28px; align-items: center; }
-  .nav-links a { font-size: 14px; font-weight: 500; color: var(--mil-lt); text-decoration: none; transition: color .2s; }
-  .nav-links a:hover { color: var(--mil-dk); }
-  .lang-toggle { display: flex; background: var(--cream-dk); border-radius: 20px; padding: 3px; gap: 2px; }
-  .lang-btn { padding: 4px 12px; border-radius: 16px; border: none; cursor: pointer; font-size: 12px; font-weight: 600; font-family: 'Inter', sans-serif; background: transparent; color: var(--mil-xlt); transition: all .2s; }
-  .lang-btn.active { background: var(--white); color: var(--mil-dk); box-shadow: 0 1px 3px rgba(0,0,0,.1); }
-
-  /* HERO */
-  .hero { min-height: 100vh; background: var(--mil-dk); display: flex; align-items: center; padding: 100px 5% 60px; position: relative; overflow: hidden; }
-  .hero::before { content: ''; position: absolute; bottom: -100px; right: -60px; width: 480px; height: 480px; border-radius: 50%; background: radial-gradient(circle, rgba(74,82,64,0.5) 0%, transparent 70%); pointer-events: none; }
-  .hero-inner { max-width: 1100px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; position: relative; z-index: 1; }
-  .hero-eyebrow { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--sage); margin-bottom: 20px; }
-  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(42px, 5vw, 64px); color: var(--white); line-height: 1.1; margin-bottom: 20px; letter-spacing: -0.5px; }
-  .hero h1 em { color: var(--tan); font-style: normal; }
-  .hero-positioning { font-size: 15px; font-weight: 500; color: var(--tan); margin-bottom: 14px; line-height: 1.5; border-left: 3px solid var(--tan); padding-left: 12px; }
-  .hero-sub { font-size: 15px; color: var(--sage); line-height: 1.8; margin-bottom: 36px; max-width: 460px; }
-  .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
-  .btn-primary { padding: 12px 24px; background: var(--tan); color: var(--mil-dk); border-radius: 8px; font-size: 14px; font-weight: 700; text-decoration: none; transition: background .2s, transform .15s; display: inline-flex; align-items: center; gap: 8px; }
-  .btn-primary:hover { background: #d4c4a8; transform: translateY(-1px); }
-  .btn-outline { padding: 12px 24px; border: 1.5px solid rgba(181,190,168,0.3); color: var(--sage); border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; transition: all .2s; display: inline-flex; align-items: center; gap: 8px; }
-  .btn-outline:hover { border-color: var(--sage); color: var(--white); transform: translateY(-1px); }
-  .btn-ghost { padding: 12px 24px; background: rgba(255,255,255,0.07); color: var(--sage); border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; border: 1px solid rgba(181,190,168,0.2); transition: all .2s; display: inline-flex; align-items: center; gap: 8px; }
-  .btn-ghost:hover { background: rgba(255,255,255,0.12); color: var(--white); }
-  .hero-stats { display: flex; gap: 36px; margin-top: 48px; padding-top: 32px; border-top: 1px solid rgba(181,190,168,0.2); }
-  .stat-num { font-family: 'Playfair Display', serif; font-size: 32px; color: var(--tan); line-height: 1; }
-  .stat-label { font-size: 12px; color: var(--mil-xlt); margin-top: 4px; font-weight: 500; }
-  .hero-right { display: flex; flex-direction: column; gap: 14px; }
-  .hero-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(181,190,168,0.15); border-radius: 12px; padding: 18px 22px; }
-  .hero-card-label { font-size: 11px; font-weight: 600; color: var(--tan); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px; }
-  .hero-card-text { font-size: 13px; color: var(--sage); line-height: 1.6; }
-  .hero-card-text strong { color: var(--white); }
-  .pill-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
-  .pill { font-size: 12px; font-weight: 500; padding: 3px 10px; border-radius: 20px; background: rgba(74,82,64,0.5); color: var(--sage); border: 1px solid rgba(181,190,168,0.2); }
-
-  /* SECTIONS */
-  section { padding: 80px 5%; }
-  .section-inner { max-width: 1100px; margin: 0 auto; }
-  .section-label { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--mil-lt); margin-bottom: 10px; }
-  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(26px, 3vw, 36px); color: var(--mil-dk); margin-bottom: 40px; line-height: 1.2; }
-
-  /* ABOUT */
-  #about { background: var(--mil-dk); }
-  #about .section-label { color: var(--mil-xlt); }
-  #about .section-title { color: var(--white); }
-  .about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 64px; align-items: start; }
-  .about-text { font-size: 16px; color: var(--sage); line-height: 1.9; }
-  .about-text p { margin-bottom: 18px; }
-  .about-text p:last-child { margin-bottom: 0; }
-  .about-text strong { color: var(--white); }
-  .about-text em { color: var(--tan); font-style: normal; font-weight: 500; }
-  .about-cards { display: flex; flex-direction: column; gap: 14px; }
-  .about-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(181,190,168,0.15); border-radius: 12px; padding: 18px 20px; }
-  .about-card-icon { font-size: 20px; margin-bottom: 8px; }
-  .about-card-title { font-size: 13px; font-weight: 600; color: var(--white); margin-bottom: 4px; }
-  .about-card-text { font-size: 13px; color: var(--sage); line-height: 1.6; }
-
-  /* SKILLS */
-  #skills { background: var(--white); }
-  .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
-  .skill-card { background: var(--cream); border: 1px solid var(--cream-dk); border-radius: 12px; padding: 22px 24px; }
-  .skill-card-title { font-size: 13px; font-weight: 700; color: var(--mil-dk); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
-  .skill-card-title .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--mil); flex-shrink: 0; }
-  .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-  .skill-tag { font-size: 12px; padding: 4px 10px; border-radius: 6px; background: var(--white); color: var(--mil-lt); font-weight: 500; border: 1px solid var(--cream-dk); }
-  .skill-tag.hot { background: var(--mil); color: var(--cream); border-color: var(--mil); }
-
-  /* EXPERIENCE */
-  #experience { background: var(--cream); }
-  .exp-timeline { display: flex; flex-direction: column; }
-  .exp-item { display: grid; grid-template-columns: 160px 1fr; gap: 32px; position: relative; padding-bottom: 44px; }
-  .exp-item:last-child { padding-bottom: 0; }
-  .exp-item::before { content: ''; position: absolute; left: 160px; top: 10px; bottom: 0; width: 1px; background: var(--cream-dk); transform: translateX(18px); }
-  .exp-item:last-child::before { display: none; }
-  .exp-date { font-size: 12px; color: var(--mil-xlt); font-weight: 500; text-align: right; padding-top: 4px; }
-  .exp-body { padding-left: 48px; position: relative; }
-  .exp-dot { position: absolute; left: 11px; top: 7px; width: 14px; height: 14px; border-radius: 50%; background: var(--cream); border: 2px solid var(--mil); }
-  .exp-company { font-size: 11px; font-weight: 700; color: var(--mil); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 4px; }
-  .exp-role { font-size: 17px; font-weight: 600; color: var(--mil-dk); margin-bottom: 8px; }
-  .exp-desc { font-size: 14px; color: var(--gray-600); line-height: 1.75; margin-bottom: 14px; }
-  .exp-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-  .exp-tag { font-size: 11px; padding: 3px 9px; border-radius: 6px; background: var(--white); color: var(--mil-lt); font-weight: 500; border: 1px solid var(--cream-dk); }
-  .exp-metric { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--mil); font-weight: 600; background: var(--tan-lt); padding: 4px 10px; border-radius: 6px; margin-bottom: 10px; border: 1px solid rgba(201,185,154,0.4); }
-
-  /* PROJECTS */
-  #projects { background: var(--white); }
-  .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
-  .project-card { background: var(--cream); border: 1px solid var(--cream-dk); border-radius: 14px; padding: 26px; display: flex; flex-direction: column; transition: box-shadow .2s, transform .15s; }
-  .project-card:hover { box-shadow: 0 8px 24px rgba(46,51,40,.08); transform: translateY(-2px); }
-  .project-badge { font-size: 11px; font-weight: 600; color: var(--mil-lt); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 10px; }
-  .project-title { font-size: 17px; font-weight: 700; color: var(--mil-dk); margin-bottom: 8px; line-height: 1.3; }
-  .project-problem { font-size: 12px; font-weight: 500; color: var(--tan); margin-bottom: 10px; }
-  .project-desc { font-size: 14px; color: var(--gray-600); line-height: 1.7; flex: 1; margin-bottom: 18px; }
-  .project-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
-  .project-stack { display: flex; flex-wrap: wrap; gap: 6px; }
-  .project-stack span { font-size: 11px; padding: 3px 9px; border-radius: 6px; background: var(--mil); color: var(--cream); font-weight: 500; }
-  .project-link { font-size: 12px; font-weight: 600; color: var(--mil); text-decoration: none; display: flex; align-items: center; gap: 4px; border-bottom: 1px solid var(--mil-xlt); padding-bottom: 1px; transition: color .2s; white-space: nowrap; }
-  .project-link:hover { color: var(--mil-dk); }
-
-  /* CONTACT */
-  #contact { background: var(--mil-dk); }
-  #contact .section-label { color: var(--mil-xlt); }
-  #contact .section-title { color: var(--white); margin-bottom: 12px; }
-  .contact-sub { font-size: 16px; color: var(--sage); margin-bottom: 36px; max-width: 480px; }
-  .contact-links { display: flex; flex-wrap: wrap; gap: 14px; }
-  .contact-link { display: inline-flex; align-items: center; gap: 10px; padding: 13px 24px; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; transition: all .2s; }
-  .contact-link.linkedin { background: var(--tan); color: var(--mil-dk); }
-  .contact-link.linkedin:hover { background: #d4c4a8; }
-  .contact-link.github { background: rgba(255,255,255,.07); color: var(--sage); border: 1px solid rgba(181,190,168,0.2); }
-  .contact-link.github:hover { background: rgba(255,255,255,.12); color: var(--white); }
-  .contact-link.email { background: rgba(255,255,255,.07); color: var(--sage); border: 1px solid rgba(181,190,168,0.2); }
-  .contact-link.email:hover { background: rgba(255,255,255,.12); color: var(--white); }
-  .cv-download { margin-top: 32px; padding-top: 28px; border-top: 1px solid rgba(181,190,168,0.15); }
-  .cv-label { font-size: 12px; font-weight: 600; color: var(--mil-xlt); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 14px; }
-  .cv-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
-  .cv-btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 8px; font-size: 13px; font-weight: 600; text-decoration: none; background: rgba(255,255,255,0.06); color: var(--sage); border: 1px solid rgba(181,190,168,0.2); transition: all .2s; }
-  .cv-btn:hover { background: rgba(255,255,255,.12); color: var(--white); }
-
-  footer { background: var(--mil-dk); border-top: 1px solid rgba(181,190,168,0.1); padding: 18px 5%; text-align: center; }
-  footer p { font-size: 13px; color: var(--mil-xlt); }
-
-  @media (max-width: 768px) {
-    .hero-inner { grid-template-columns: 1fr; gap: 40px; }
-    .hero-right { display: none; }
-    .about-grid { grid-template-columns: 1fr; gap: 32px; }
-    .exp-item { grid-template-columns: 1fr; gap: 2px; }
-    .exp-item::before { display: none; }
-    .exp-date { text-align: left; }
-    .exp-body { padding-left: 20px; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.5;
   }
-  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+  h1, h2, h3, h4 { font-family: var(--font-display); margin: 0; letter-spacing: -0.01em; }
+  p { margin: 0; }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+  em { font-style: normal; }
+  section { padding: 5rem 1.5rem; }
+  .wrap { max-width: var(--max); margin: 0 auto; }
+  .eyebrow { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: var(--muted); }
+  .section-title { margin-top: 0.5rem; font-size: clamp(1.8rem, 3.2vw, 2.4rem); font-weight: 700; color: var(--fg); }
 
-  [data-lang="es"] { display: none; }
-  body.lang-es [data-lang="es"] { display: revert; }
-  body.lang-es [data-lang="en"] { display: none; }
+  /* ===================== Reveal animations ===================== */
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+  .reveal.delay-1 { transition-delay: .08s; }
+  .reveal.delay-2 { transition-delay: .16s; }
+  .reveal.delay-3 { transition-delay: .24s; }
+  .reveal.delay-4 { transition-delay: .32s; }
+  .reveal.delay-5 { transition-delay: .40s; }
+  .reveal.delay-6 { transition-delay: .48s; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+
+  /* ===================== Navbar ===================== */
+  .nav {
+    position: fixed; inset: 0 0 auto 0; z-index: 50;
+    height: 64px; display: flex; align-items: center;
+    transition: background .3s ease, border-color .3s ease, backdrop-filter .3s ease;
+    background: transparent; border-bottom: 1px solid transparent;
+  }
+  .nav.scrolled {
+    background: rgba(246, 242, 231, 0.88);
+    backdrop-filter: saturate(1.4) blur(10px);
+    -webkit-backdrop-filter: saturate(1.4) blur(10px);
+    border-bottom-color: rgba(0,0,0,0.06);
+  }
+  .nav-inner {
+    max-width: var(--max); width: 100%; margin: 0 auto;
+    padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between;
+  }
+  .brand { font-family: var(--font-display); font-weight: 700; font-size: 1.25rem; color: var(--cream); transition: color .3s; }
+  .nav.scrolled .brand { color: var(--fg); }
+  .brand:hover { color: var(--taupe); }
+  .nav.scrolled .brand:hover { color: var(--forest); }
+  .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+  .nav-links { display: none; gap: 1.5rem; list-style: none; padding: 0; margin: 0; }
+  @media (min-width: 768px) { .nav-links { display: flex; } }
+  .nav-links a {
+    font-size: 0.87rem; font-weight: 500;
+    color: rgba(246,242,231,.85); transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--cream); }
+  .nav.scrolled .nav-links a { color: var(--muted); }
+  .nav.scrolled .nav-links a:hover { color: var(--fg); }
+
+  .lang-toggle {
+    display: flex; align-items: center; padding: 3px;
+    border-radius: 999px; border: 1px solid rgba(246,242,231,.3);
+    background: rgba(75,107,90,.4); backdrop-filter: blur(6px);
+    transition: all .3s;
+  }
+  .nav.scrolled .lang-toggle { border-color: var(--border); background: var(--secondary); backdrop-filter: none; }
+  .lang-toggle button {
+    padding: 4px 12px; border-radius: 999px;
+    font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em;
+    color: rgba(246,242,231,.8); transition: all .2s;
+  }
+  .lang-toggle button:hover { color: var(--cream); }
+  .nav.scrolled .lang-toggle button { color: var(--muted); }
+  .nav.scrolled .lang-toggle button:hover { color: var(--fg); }
+  .lang-toggle button.active { background: var(--cream); color: var(--forest-deep); box-shadow: 0 1px 3px rgba(0,0,0,.15); }
+  .nav.scrolled .lang-toggle button.active { background: #fff; color: var(--fg); }
+
+  /* ===================== Hero ===================== */
+  .hero {
+    position: relative; min-height: 100vh; display: flex; align-items: center;
+    background: var(--forest-deep); color: var(--cream); overflow: hidden;
+    padding: 6rem 1.5rem 4rem;
+  }
+  .hero::before, .hero::after {
+    content: ""; position: absolute; border-radius: 50%; pointer-events: none; filter: blur(100px);
+  }
+  .hero::before { right: -100px; bottom: -100px; width: 420px; height: 420px; background: rgba(95,133,112,.35); }
+  .hero::after { top: 25%; left: 25%; width: 280px; height: 280px; background: rgba(212,180,131,.18); filter: blur(80px); }
+  .hero-grid {
+    position: relative; z-index: 1;
+    max-width: var(--max); margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center;
+  }
+  @media (min-width: 1024px) { .hero-grid { grid-template-columns: 1fr 1fr; gap: 4rem; } }
+  .hero-eyebrow { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; color: var(--sage); }
+  .hero h1 {
+    margin-top: 1.25rem;
+    font-size: clamp(2.6rem, 6vw, 4.5rem); font-weight: 700; line-height: 1.05;
+    color: var(--cream);
+  }
+  .hero h1 em { color: var(--taupe); }
+  .hero-positioning {
+    margin-top: 1.25rem; max-width: 30rem;
+    padding-left: 1rem; border-left: 2px solid var(--taupe);
+    font-size: 1.05rem; font-weight: 600; color: var(--cream);
+  }
+  .hero-sub { margin-top: 1rem; max-width: 34rem; font-size: 0.95rem; color: var(--sage); line-height: 1.6; }
+  .hero-ctas { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.65rem 1.25rem; border-radius: 0.55rem;
+    font-size: 0.87rem; font-weight: 600;
+    transition: all .2s ease;
+  }
+  .btn-primary { background: var(--cream); color: var(--forest-deep); }
+  .btn-primary:hover { background: var(--taupe); box-shadow: 0 6px 16px rgba(0,0,0,.2); }
+  .btn-outline { background: transparent; border: 1px solid rgba(246,242,231,.4); color: var(--cream); }
+  .btn-outline:hover { border-color: var(--cream); background: rgba(246,242,231,.08); }
+  .btn-ghost { background: rgba(75,107,90,.75); color: var(--cream); backdrop-filter: blur(6px); }
+  .btn-ghost:hover { background: var(--forest); }
+  .btn .arrow { display: inline-block; transition: transform .2s; }
+  .btn:hover .arrow { transform: translate(2px,-2px); }
+
+  .hero-stats {
+    margin-top: 2.5rem; padding-top: 1.5rem;
+    border-top: 1px solid rgba(184,203,184,.2);
+    display: flex; flex-wrap: wrap; gap: 2rem;
+  }
+  .stat-num { font-family: var(--font-display); font-size: 1.85rem; font-weight: 700; color: var(--taupe); }
+  .stat-label { margin-top: 4px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; color: rgba(184,203,184,.8); font-weight: 500; }
+
+  .hero-cards { display: none; flex-direction: column; gap: 1rem; }
+  @media (min-width: 1024px) { .hero-cards { display: flex; } }
+  .glass-card {
+    padding: 1.25rem; border-radius: 0.85rem;
+    border: 1px solid rgba(184,203,184,.15);
+    background: rgba(246,242,231,.05); backdrop-filter: blur(4px);
+  }
+  .card-label { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--taupe); }
+  .card-value { margin-top: 0.5rem; font-size: 0.9rem; color: rgba(246,242,231,.9); line-height: 1.55; }
+  .tag-row { margin-top: 0.75rem; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .tag {
+    padding: 3px 10px; border-radius: 999px;
+    border: 1px solid rgba(184,203,184,.2); background: rgba(75,107,90,.4);
+    font-size: 0.72rem; font-weight: 500; color: var(--sage);
+  }
+
+  /* ===================== About ===================== */
+  .about { background: var(--bg); }
+  .about-grid { margin-top: 2.5rem; display: grid; gap: 3rem; grid-template-columns: 1fr; }
+  @media (min-width: 1024px) { .about-grid { grid-template-columns: 1.2fr 1fr; } }
+  .about-text p { margin-top: 1.1rem; color: var(--muted); font-size: 1rem; line-height: 1.75; }
+  .about-text p:first-child { margin-top: 0; }
+  .about-text strong { color: var(--fg); font-weight: 600; }
+  .about-text em { font-style: italic; font-weight: 500; color: var(--forest); }
+  .about-cards { display: flex; flex-direction: column; gap: 1rem; }
+  .value-card {
+    padding: 1.25rem; border-radius: 0.85rem;
+    border: 1px solid var(--border); background: var(--card);
+    transition: transform .2s, box-shadow .2s;
+  }
+  .value-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,.06); }
+  .value-card .icon { font-size: 1.35rem; }
+  .value-card h3 { font-family: var(--font-sans); font-size: 0.9rem; font-weight: 600; color: var(--fg); margin-top: 0.5rem; }
+  .value-card p { margin-top: 0.4rem; font-size: 0.87rem; color: rgba(30,42,36,.8); line-height: 1.55; }
+  .value-card.highlight { background: rgba(212,180,131,.12); border-color: rgba(212,180,131,.4); }
+  .value-card.highlight p { font-family: var(--font-display); font-style: italic; color: var(--forest); }
+
+  /* ===================== Skills ===================== */
+  .skills { background: var(--forest-deep); color: var(--cream); }
+  .skills .eyebrow { color: var(--sage); }
+  .skills .section-title { color: var(--cream); }
+  .skill-grid {
+    margin-top: 2.5rem; display: grid; gap: 1rem;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 640px) { .skill-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1024px) { .skill-grid { grid-template-columns: repeat(3, 1fr); } }
+  .skill-card {
+    padding: 1.25rem; border-radius: 0.85rem;
+    border: 1px solid rgba(184,203,184,.15);
+    background: rgba(246,242,231,.05);
+    transition: border-color .2s;
+  }
+  .skill-card:hover { border-color: rgba(184,203,184,.35); }
+  .skill-card h3 {
+    display: flex; align-items: center; gap: 0.5rem;
+    font-family: var(--font-sans); font-size: 0.83rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.06em; color: var(--taupe);
+  }
+  .skill-card h3::before {
+    content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--moss);
+  }
+  .skill-tags { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .skill-tag {
+    padding: 4px 10px; border-radius: 6px;
+    font-size: 0.75rem; font-weight: 500;
+    border: 1px solid rgba(184,203,184,.2); background: rgba(75,107,90,.4); color: var(--sage);
+  }
+  .skill-tag.hot { background: var(--moss); color: var(--cream); border-color: transparent; }
+
+  /* ===================== Experience ===================== */
+  .experience { background: var(--secondary); }
+  .timeline { position: relative; margin-top: 3rem; display: flex; flex-direction: column; gap: 2.5rem; }
+  .timeline::before {
+    content: ""; position: absolute; display: none;
+    top: 6px; bottom: 6px; left: 159px; width: 1px; background: var(--border);
+  }
+  @media (min-width: 768px) { .timeline::before { display: block; } }
+  .tl-item {
+    position: relative; display: grid; gap: 0.5rem;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 768px) {
+    .tl-item { grid-template-columns: 160px 1fr; gap: 2rem; }
+    .tl-date { text-align: right; }
+  }
+  .tl-date { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); padding-top: 2px; }
+  .tl-body { position: relative; padding-left: 1.5rem; }
+  @media (min-width: 768px) { .tl-body { padding-left: 2.5rem; } }
+  .tl-body::before {
+    content: ""; position: absolute; top: 6px; left: 0;
+    width: 14px; height: 14px; border-radius: 50%;
+    border: 2px solid var(--forest); background: var(--bg);
+  }
+  @media (min-width: 768px) { .tl-body::before { left: -25px; } }
+  .tl-company { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--forest); }
+  .tl-role { margin-top: 0.25rem; font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--fg); }
+  .tl-metric {
+    display: inline-flex; margin-top: 0.5rem; padding: 4px 10px; border-radius: 6px;
+    border: 1px solid rgba(212,180,131,.4); background: rgba(212,180,131,.12);
+    font-size: 0.75rem; font-weight: 600; color: var(--forest);
+  }
+  .tl-desc { margin-top: 0.75rem; color: var(--muted); font-size: 0.95rem; line-height: 1.65; }
+  .tl-tags { margin-top: 0.75rem; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .tl-tag {
+    padding: 4px 8px; border-radius: 6px; font-size: 0.72rem; font-weight: 500;
+    border: 1px solid var(--border); background: var(--bg); color: var(--muted);
+  }
+
+  /* ===================== Projects ===================== */
+  .projects { background: var(--bg); }
+  .project-grid {
+    margin-top: 2.5rem; display: grid; gap: 1.25rem;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 768px) { .project-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1024px) { .project-grid { grid-template-columns: repeat(3, 1fr); } }
+  .project-card {
+    display: flex; flex-direction: column;
+    padding: 1.5rem; border-radius: 0.85rem;
+    border: 1px solid var(--border); background: var(--card);
+    transition: transform .2s, box-shadow .2s, border-color .2s;
+  }
+  .project-card:hover { transform: translateY(-3px); box-shadow: 0 12px 24px rgba(0,0,0,.08); border-color: rgba(75,107,90,.3); }
+  .project-badge { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+  .project-title { margin-top: 0.5rem; font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--fg); }
+  .project-problem { margin-top: 0.5rem; font-size: 0.78rem; font-weight: 600; color: var(--forest); line-height: 1.5; }
+  .project-desc { margin-top: 0.75rem; flex: 1; font-size: 0.87rem; color: var(--muted); line-height: 1.6; }
+  .project-footer { margin-top: 1.25rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem; }
+  .project-stack { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+  .stack-tag {
+    padding: 3px 8px; border-radius: 6px;
+    font-size: 0.72rem; font-weight: 500;
+    background: var(--forest); color: var(--cream);
+  }
+  .project-link { display: inline-flex; align-items: center; gap: 4px; font-size: 0.75rem; font-weight: 700; color: var(--forest); }
+  .project-link:hover { color: var(--forest-deep); }
+
+  /* ===================== Contact ===================== */
+  .contact { background: var(--forest-deep); color: var(--cream); }
+  .contact .eyebrow { color: var(--sage); }
+  .contact .section-title { color: var(--cream); }
+  .contact-sub { margin-top: 1rem; max-width: 36rem; color: rgba(184,203,184,.9); font-size: 1rem; line-height: 1.65; }
+  .contact-ctas { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .cv-block { margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid rgba(184,203,184,.15); }
+  .cv-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--sage); }
+  .cv-links { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .cv-btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.55rem 1rem; border-radius: 0.55rem;
+    font-size: 0.87rem; font-weight: 600; color: var(--cream);
+    border: 1px solid rgba(246,242,231,.3); background: rgba(75,107,90,.6);
+    transition: all .2s;
+  }
+  .cv-btn:hover { background: var(--forest); border-color: var(--cream); }
+
+  /* ===================== Footer ===================== */
+  footer {
+    padding: 2rem 1.5rem; text-align: center;
+    background: var(--forest-deep); border-top: 1px solid rgba(184,203,184,.1);
+  }
+  footer p:first-child { font-family: var(--font-display); font-style: italic; font-size: 0.9rem; color: var(--taupe); }
+  footer p:last-child { margin-top: 0.5rem; font-size: 0.75rem; color: rgba(184,203,184,.7); }
 </style>
 </head>
 <body>
 
-<nav>
-  <a href="#" class="nav-logo">FFS</a>
-  <div class="nav-links">
-    <a href="#about"      data-lang="en">About</a>
-    <a href="#about"      data-lang="es">Sobre mí</a>
-    <a href="#skills"     data-lang="en">Skills</a>
-    <a href="#skills"     data-lang="es">Habilidades</a>
-    <a href="#experience" data-lang="en">Experience</a>
-    <a href="#experience" data-lang="es">Experiencia</a>
-    <a href="#projects"   data-lang="en">Projects</a>
-    <a href="#projects"   data-lang="es">Proyectos</a>
-    <a href="#contact"    data-lang="en">Contact</a>
-    <a href="#contact"    data-lang="es">Contacto</a>
-    <div class="lang-toggle">
-      <button class="lang-btn" onclick="setLang('en')">EN</button>
-      <button class="lang-btn active"        onclick="setLang('es')">ES</button>
+<!-- ===================== Navbar ===================== -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#home" class="brand">FFS</a>
+    <div class="nav-right">
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about" data-en="About" data-es="Sobre mí">Sobre mí</a></li>
+        <li><a href="#skills" data-en="Skills" data-es="Habilidades">Habilidades</a></li>
+        <li><a href="#experience" data-en="Experience" data-es="Experiencia">Experiencia</a></li>
+        <li><a href="#projects" data-en="Projects" data-es="Proyectos">Proyectos</a></li>
+        <li><a href="#contact" data-en="Contact" data-es="Contacto">Contacto</a></li>
+      </ul>
+      <div class="lang-toggle" id="lang-toggle">
+        <button data-lang="en">EN</button>
+        <button data-lang="es" class="active">ES</button>
+      </div>
     </div>
   </div>
-</nav>
+</header>
 
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-inner">
+<!-- ===================== Hero ===================== -->
+<section id="home" class="hero">
+  <div class="hero-grid">
     <div>
-      <span class="hero-eyebrow" data-lang="en">Software Engineer · Buenos Aires, Argentina</span>
-      <span class="hero-eyebrow" data-lang="es">Ingeniero de Software · Buenos Aires, Argentina</span>
-      <h1 data-lang="en">Franco<br>Fabian<br><em>Secchi</em></h1>
-      <h1 data-lang="es">Franco<br>Fabian<br><em>Secchi</em></h1>
-      <p class="hero-positioning" data-lang="en">Backend engineer building software that actually helps people.</p>
-      <p class="hero-positioning" data-lang="es">Ingeniero backend construyendo software que realmente ayuda a las personas.</p>
-      <p class="hero-sub" data-lang="en">6+ years shipping production software across eCommerce, mobile, and SaaS. Computer Engineering student at UBA. Moving toward health tech and scientific computing.</p>
-      <p class="hero-sub" data-lang="es">6+ años entregando software en producción para eCommerce, mobile y SaaS. Estudiante de Ingeniería Informática en la UBA. Orientándome hacia health tech y computación científica.</p>
-      <div class="hero-ctas">
-        <a href="https://linkedin.com/in/franco-fabian-secchi-9abb3a173" target="_blank" class="btn-primary">LinkedIn ↗</a>
-        <a href="https://github.com/FrancoSecchi" target="_blank" class="btn-outline">GitHub ↗</a>
-        <a href="#contact" class="btn-ghost" data-lang="en">Get in touch</a>
-        <a href="#contact" class="btn-ghost" data-lang="es">Contactame</a>
+      <span class="hero-eyebrow reveal"
+        data-en="Software Engineer · Buenos Aires, Argentina"
+        data-es="Ingeniero de Software · Buenos Aires, Argentina">Ingeniero de Software · Buenos Aires, Argentina</span>
+
+      <h1 class="reveal delay-1">Franco<br />Fabian <em>Secchi</em></h1>
+
+      <p class="hero-positioning reveal delay-2"
+        data-en="Backend engineer building software that actually helps people."
+        data-es="Ingeniero backend construyendo software que realmente ayuda a las personas.">
+        Ingeniero backend construyendo software que realmente ayuda a las personas.
+      </p>
+
+      <p class="hero-sub reveal delay-3"
+        data-en="6+ years shipping production software across eCommerce, mobile, and SaaS. Computer Engineering student at UBA. Moving toward health tech and scientific computing."
+        data-es="6+ años entregando software en producción para eCommerce, mobile y SaaS. Estudiante de Ingeniería Informática en la UBA. Orientándome hacia health tech y computación científica.">
+        6+ años entregando software en producción para eCommerce, mobile y SaaS. Estudiante de Ingeniería Informática en la UBA. Orientándome hacia health tech y computación científica.
+      </p>
+
+      <div class="hero-ctas reveal delay-4">
+        <a class="btn btn-primary" href="https://linkedin.com/in/franco-fabian-secchi-9abb3a173" target="_blank" rel="noopener">LinkedIn <span class="arrow">↗</span></a>
+        <a class="btn btn-outline" href="https://github.com/FrancoSecchi" target="_blank" rel="noopener">GitHub <span class="arrow">↗</span></a>
+        <a class="btn btn-ghost" href="#contact"><span>✉</span><span data-en="Get in touch" data-es="Contactame">Contactame</span></a>
       </div>
-      <div class="hero-stats">
-        <div><div class="stat-num">6+</div><div class="stat-label" data-lang="en">Years in production</div><div class="stat-label" data-lang="es">Años en producción</div></div>
-        <div><div class="stat-num">30k+</div><div class="stat-label" data-lang="en">Merchants served</div><div class="stat-label" data-lang="es">Comercios activos</div></div>
-        <div><div class="stat-num">~120ms</div><div class="stat-label">P95 latency</div></div>
-      </div>
-    </div>
-    <div class="hero-right">
-      <div class="hero-card">
-        <div class="hero-card-label" data-lang="en">Currently at</div>
-        <div class="hero-card-label" data-lang="es">Actualmente en</div>
-        <div class="hero-card-text"><strong>TITANPush</strong> — <span data-lang="en">Software Developer · Sep 2019 – Present</span><span data-lang="es">Desarrollador de Software · Sep 2019 – Actualidad</span></div>
-      </div>
-      <div class="hero-card">
-        <div class="hero-card-label" data-lang="en">Core stack</div>
-        <div class="hero-card-label" data-lang="es">Stack principal</div>
-        <div class="pill-row"><span class="pill">PHP</span><span class="pill">TypeScript</span><span class="pill">React</span><span class="pill">React Native</span><span class="pill">PostgreSQL</span><span class="pill">MySQL</span></div>
-      </div>
-      <div class="hero-card">
-        <div class="hero-card-label" data-lang="en">Education</div>
-        <div class="hero-card-label" data-lang="es">Educación</div>
-        <div class="hero-card-text">
-          <strong data-lang="en">Computer Engineering — UBA</strong>
-          <strong data-lang="es">Ingeniería Informática — UBA</strong><br>
-          <span data-lang="en">Expected 2027 · 90% complete</span>
-          <span data-lang="es">Estimado 2027 · 90% completado</span>
+
+      <div class="hero-stats reveal delay-5">
+        <div>
+          <div class="stat-num">6+</div>
+          <div class="stat-label" data-en="Years in production" data-es="Años en producción">Años en producción</div>
+        </div>
+        <div>
+          <div class="stat-num">30k+</div>
+          <div class="stat-label" data-en="Merchants served" data-es="Comercios activos">Comercios activos</div>
+        </div>
+        <div>
+          <div class="stat-num">~120ms</div>
+          <div class="stat-label">P95 latency</div>
         </div>
       </div>
-      <div class="hero-card">
-        <div class="hero-card-label" data-lang="en">Learning now</div>
-        <div class="hero-card-label" data-lang="es">Aprendiendo ahora</div>
-        <div class="pill-row"><span class="pill">Python</span><span class="pill">FastAPI</span><span class="pill">AWS</span><span class="pill">Bioinformatics</span></div>
+    </div>
+
+    <div class="hero-cards">
+      <div class="glass-card reveal delay-2">
+        <div class="card-label" data-en="Currently at" data-es="Actualmente en">Actualmente en</div>
+        <div class="card-value"
+          data-en="TITANPush — Software Developer · Sep 2019 – Present"
+          data-es="TITANPush — Desarrollador de Software · Sep 2019 – Actualidad">
+          TITANPush — Desarrollador de Software · Sep 2019 – Actualidad
+        </div>
+      </div>
+      <div class="glass-card reveal delay-3">
+        <div class="card-label" data-en="Core stack" data-es="Stack principal">Stack principal</div>
+        <div class="tag-row">
+          <span class="tag">PHP</span><span class="tag">TypeScript</span><span class="tag">React</span>
+          <span class="tag">React Native</span><span class="tag">PostgreSQL</span><span class="tag">MySQL</span>
+        </div>
+      </div>
+      <div class="glass-card reveal delay-4">
+        <div class="card-label" data-en="Education" data-es="Educación">Educación</div>
+        <div class="card-value"
+          data-en="Computer Engineering — UBA · Expected 2027 · 90% complete"
+          data-es="Ingeniería Informática — UBA · Estimado 2027 · 90% completado">
+          Ingeniería Informática — UBA · Estimado 2027 · 90% completado
+        </div>
+      </div>
+      <div class="glass-card reveal delay-5">
+        <div class="card-label" data-en="Learning now" data-es="Aprendiendo ahora">Aprendiendo ahora</div>
+        <div class="tag-row">
+          <span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">AWS</span>
+          <span class="tag" data-en="Bioinformatics" data-es="Bioinformática">Bioinformática</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="section-inner">
-    <div class="section-label" data-lang="en">About me</div>
-    <div class="section-label" data-lang="es">Sobre mí</div>
-    <h2 class="section-title" data-lang="en">Why I build software</h2>
-    <h2 class="section-title" data-lang="es">Por qué construyo software</h2>
+<!-- ===================== About ===================== -->
+<section id="about" class="about">
+  <div class="wrap">
+    <span class="eyebrow reveal" data-en="About me" data-es="Sobre mí">Sobre mí</span>
+    <h2 class="section-title reveal delay-1" data-en="Why I build software" data-es="Por qué construyo software">Por qué construyo software</h2>
+
     <div class="about-grid">
-      <div>
-        <div class="about-text" data-lang="en">
+      <div class="about-text reveal delay-2">
+        <!-- ES -->
+        <div data-lang-block="es">
+          <p>Durante mi carrera no me paré a pensar qué iba a hacer después de ella, me faltaban muchas materias importantes que ver, pero ahora que me encuentro al final, me surgió esa pregunta <em>¿Qué quiero hacer de mi vida?</em> No me imagino estar 40 años de mi vida en un ecommerce o haciendo páginas web. Al final del día eso no me llenaría el <em>alma</em>. Entonces buscando más áreas y caminos, llegué a una conclusión: <em>quiero hacer algo que le haga bien a alguien.</em> Si algo que hice terminó mejorándole la vida a alguien que lo necesita, al final del día me voy a sentir satisfecho.</p>
+          <p>Eso fue lo que me llevó hacia el cruce entre software y medicina. Llevo 6+ años construyendo sistemas en producción en <strong>TITANPush</strong> — motores de alto tráfico, lógica de negocio compleja e infraestructura a escala real. Y llegué a creer que la misma disciplina que hace confiables las plataformas de eCommerce puede ayudar a investigadores, médicos y pacientes.</p>
+          <p>Actualmente estoy terminando la carrera de <strong>Ingeniería Informática en la UBA</strong> y estudiando bioinformática — explorando cómo los métodos computacionales pueden resolver problemas en biología molecular y medicina clínica.</p>
+        </div>
+        <!-- EN -->
+        <div data-lang-block="en" hidden>
           <p>After exploring many paths, I arrived at a simple north: <em>I want to do something that genuinely helps someone.</em> Not in an abstract way — in the kind of way where you can trace a line from the code you wrote to a real person whose life is a little better.</p>
-          <p>That's what led me toward the intersection of software and medicine. I've spent 6+ years building production systems at <strong>TITANPush</strong> — working on high-load engines, complex business logic, and real-scale infrastructure. And I've come to believe that the same engineering discipline that makes eCommerce platforms reliable can help researchers, doctors, and patients get better tools.</p>
-          <p>I'm currently completing my <strong>Computer Engineering degree at UBA</strong> and studying bioinformatics — exploring how computational methods can solve problems in molecular biology and clinical medicine. It's early, but the direction is clear.</p>
-        </div>
-        <div class="about-text" data-lang="es">
-          <p>Después de explorar muchos caminos, llegué a un norte simple: <em>quiero hacer algo que le haga bien a alguien.</em> No de forma abstracta — del tipo donde podés trazar una línea desde el código que escribiste hasta una persona real cuya vida mejoró un poco.</p>
-          <p>Eso fue lo que me llevó hacia el cruce entre software y medicina. Llevo 6+ años construyendo sistemas en producción en <strong>TITANPush</strong> — trabajando en motores de alto tráfico, lógica de negocio compleja e infraestructura a escala real. Y llegué a creer que la misma disciplina de ingeniería que hace confiables las plataformas de eCommerce puede ayudar a investigadores, médicos y pacientes a tener mejores herramientas.</p>
-          <p>Actualmente estoy terminando la carrera de <strong>Ingeniería Informática en la UBA</strong> y estudiando bioinformática — explorando cómo los métodos computacionales pueden resolver problemas en biología molecular y medicina clínica. Es un camino que recién empieza, pero la dirección es clara.</p>
+          <p>That's what led me toward the intersection of software and medicine. I've spent 6+ years building production systems at <strong>TITANPush</strong> — working on high-load engines, complex business logic, and real-scale infrastructure. The same engineering discipline that makes eCommerce reliable can help researchers, doctors, and patients get better tools.</p>
+          <p>I'm currently completing my <strong>Computer Engineering degree at UBA</strong> and studying bioinformatics — exploring how computational methods can solve problems in molecular biology and clinical medicine.</p>
         </div>
       </div>
+
       <div class="about-cards">
-        <div class="about-card">
-          <div class="about-card-icon">🔬</div>
-          <div class="about-card-title" data-lang="en">Exploring bioinformatics</div>
-          <div class="about-card-title" data-lang="es">Explorando bioinformática</div>
-          <div class="about-card-text" data-lang="en">Studying computational biology at UBA Exactas. In contact with research groups working at the intersection of computing and clinical medicine.</div>
-          <div class="about-card-text" data-lang="es">Estudiando biología computacional en Exactas UBA. En contacto con grupos de investigación que trabajan en el cruce entre computación y medicina clínica.</div>
+        <div class="value-card reveal delay-2">
+          <div class="icon">🔬</div>
+          <h3 data-en="Exploring bioinformatics" data-es="Explorando bioinformática">Explorando bioinformática</h3>
+          <p data-en="Studying computational biology at UBA Exactas. In contact with research groups working at the intersection of computing and clinical medicine."
+             data-es="Estudiando biología computacional en Exactas UBA. En contacto con grupos de investigación que trabajan en el cruce entre computación y medicina clínica.">
+             Estudiando biología computacional en Exactas UBA. En contacto con grupos de investigación que trabajan en el cruce entre computación y medicina clínica.</p>
         </div>
-        <div class="about-card">
-          <div class="about-card-icon">🏗️</div>
-          <div class="about-card-title" data-lang="en">Engineering mindset</div>
-          <div class="about-card-title" data-lang="es">Mentalidad de ingeniería</div>
-          <div class="about-card-text" data-lang="en">I care about systems that work at scale, code that others can maintain, and products that solve real problems.</div>
-          <div class="about-card-text" data-lang="es">Me importan los sistemas que funcionan a escala, el código que otros pueden mantener y los productos que resuelven problemas reales.</div>
+        <div class="value-card reveal delay-3">
+          <div class="icon">🏗️</div>
+          <h3 data-en="Engineering mindset" data-es="Mentalidad de ingeniería">Mentalidad de ingeniería</h3>
+          <p data-en="I care about systems that work at scale, code that others can maintain, and products that solve real problems."
+             data-es="Me importan los sistemas que funcionan a escala, el código que otros pueden mantener y los productos que resuelven problemas reales.">
+             Me importan los sistemas que funcionan a escala, el código que otros pueden mantener y los productos que resuelven problemas reales.</p>
         </div>
-        <div class="about-card">
-          <div class="about-card-icon">🌎</div>
-          <div class="about-card-title" data-lang="en">Remote-first, 6 years</div>
-          <div class="about-card-title" data-lang="es">Remote-first desde hace 6 años</div>
-          <div class="about-card-text" data-lang="en">Experienced in async collaboration, distributed teams, and delivering without constant oversight. English C1.</div>
-          <div class="about-card-text" data-lang="es">Con experiencia en colaboración asíncrona, equipos distribuidos y entrega autónoma. Inglés C1.</div>
+        <div class="value-card reveal delay-4">
+          <div class="icon">🌎</div>
+          <h3 data-en="Remote-first, 6 years" data-es="Remote-first desde hace 6 años">Remote-first desde hace 6 años</h3>
+          <p data-en="Experienced in async collaboration, distributed teams, and delivering without constant oversight. English C1."
+             data-es="Con experiencia en colaboración asíncrona, equipos distribuidos y entrega autónoma. Inglés C1.">
+             Con experiencia en colaboración asíncrona, equipos distribuidos y entrega autónoma. Inglés C1.</p>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SKILLS -->
-<section id="skills">
-  <div class="section-inner">
-    <div class="section-label" data-lang="en">Technical Skills</div>
-    <div class="section-label" data-lang="es">Habilidades Técnicas</div>
-    <h2 class="section-title" data-lang="en">What I build with</h2>
-    <h2 class="section-title" data-lang="es">Con qué construyo</h2>
-    <div class="skills-grid">
-      <div class="skill-card">
-        <div class="skill-card-title"><span class="dot"></span><span data-lang="en">Languages</span><span data-lang="es">Lenguajes</span></div>
-        <div class="skill-tags"><span class="skill-tag hot">PHP</span><span class="skill-tag hot">TypeScript</span><span class="skill-tag hot">JavaScript</span><span class="skill-tag">SQL</span><span class="skill-tag">C</span><span class="skill-tag">Rust</span><span class="skill-tag">Python</span></div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-card-title"><span class="dot"></span>Frontend &amp; Mobile</div>
-        <div class="skill-tags"><span class="skill-tag hot">React</span><span class="skill-tag hot">React Native</span><span class="skill-tag">Svelte</span><span class="skill-tag">HTML5</span><span class="skill-tag">CSS3</span></div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-card-title"><span class="dot"></span>Backend &amp; APIs</div>
-        <div class="skill-tags"><span class="skill-tag hot">REST APIs</span><span class="skill-tag hot">PHP Yii</span><span class="skill-tag">FastAPI</span><span class="skill-tag">Node.js</span></div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-card-title"><span class="dot"></span><span data-lang="en">Databases</span><span data-lang="es">Bases de Datos</span></div>
-        <div class="skill-tags"><span class="skill-tag hot">PostgreSQL</span><span class="skill-tag hot">MySQL</span><span class="skill-tag">Supabase</span><span class="skill-tag">Redis</span></div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-card-title"><span class="dot"></span><span data-lang="en">Tools &amp; Infra</span><span data-lang="es">Herramientas e Infra</span></div>
-        <div class="skill-tags"><span class="skill-tag hot">Git</span><span class="skill-tag hot">Datadog</span><span class="skill-tag">Docker</span><span class="skill-tag">GitHub Actions</span><span class="skill-tag">AWS</span></div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-card-title"><span class="dot"></span>CS Fundamentals</div>
-        <div class="skill-tags"><span class="skill-tag hot">Data Structures</span><span class="skill-tag">Algorithms</span><span class="skill-tag">System Design</span><span class="skill-tag">Concurrency</span><span class="skill-tag">Dist. Systems</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="section-inner">
-    <div class="section-label" data-lang="en">Experience</div>
-    <div class="section-label" data-lang="es">Experiencia</div>
-    <h2 class="section-title" data-lang="en">Where I've worked</h2>
-    <h2 class="section-title" data-lang="es">Dónde trabajé</h2>
-    <div class="exp-timeline">
-      <div class="exp-item">
-        <div class="exp-date" data-lang="en">Sep 2019 – Present</div>
-        <div class="exp-date" data-lang="es">Sep 2019 – Actualidad</div>
-        <div class="exp-body">
-          <div class="exp-dot"></div>
-          <div class="exp-company">TITANPush</div>
-          <div class="exp-role" data-lang="en">Software Developer</div>
-          <div class="exp-role" data-lang="es">Desarrollador de Software</div>
-          <div class="exp-metric">⚡ ~120ms P95 · 30,000+ merchants · 10+ platforms</div>
-          <div class="exp-desc" data-lang="en">Owned end-to-end development of the Promotions Engine — cart analysis, combinable discount rules, progressive calculations, and real-time validation. Led strategic refactoring of core legacy modules. Designed merchant-facing configuration systems used daily across Tiendanube, Mercadoshops, and Shopify.</div>
-          <div class="exp-desc" data-lang="es">Responsable del desarrollo integral del Motor de Promociones — análisis de carrito, reglas de descuentos combinables, cálculos progresivos y validación en tiempo real. Lideré el refactoring estratégico de módulos core. Diseñé sistemas de configuración usados diariamente en Tiendanube, Mercadoshops y Shopify.</div>
-          <div class="exp-tags"><span class="exp-tag">PHP</span><span class="exp-tag">TypeScript</span><span class="exp-tag">MySQL</span><span class="exp-tag">REST APIs</span><span class="exp-tag">Datadog</span></div>
-        </div>
-      </div>
-      <div class="exp-item">
-        <div class="exp-date">Feb – Jul 2025</div>
-        <div class="exp-body">
-          <div class="exp-dot"></div>
-          <div class="exp-company">Dumbbell (Freelance)</div>
-          <div class="exp-role" data-lang="en">Software Developer</div>
-          <div class="exp-role" data-lang="es">Desarrollador de Software</div>
-          <div class="exp-desc" data-lang="en">Architected the full service communication layer for a mobile fitness platform — Supabase, React Native, and React Query with optimized caching. Designed the complete PostgreSQL schema and internal coding standards.</div>
-          <div class="exp-desc" data-lang="es">Arquitecté la capa completa de comunicación entre servicios para una plataforma móvil de fitness — Supabase, React Native y React Query con caché optimizada. Diseñé el esquema completo de PostgreSQL y los estándares internos de código.</div>
-          <div class="exp-tags"><span class="exp-tag">React Native</span><span class="exp-tag">TypeScript</span><span class="exp-tag">Supabase</span><span class="exp-tag">PostgreSQL</span><span class="exp-tag">React Query</span></div>
-        </div>
-      </div>
-      <div class="exp-item">
-        <div class="exp-date" data-lang="en">Sep 2021 – Aug 2023</div>
-        <div class="exp-date" data-lang="es">Sep 2021 – Ago 2023</div>
-        <div class="exp-body">
-          <div class="exp-dot"></div>
-          <div class="exp-company">UBA — Facultad de Ingeniería</div>
-          <div class="exp-role" data-lang="en">Teaching Assistant — Algorithms &amp; Data Structures</div>
-          <div class="exp-role" data-lang="es">Ayudante de Cátedra — Algoritmos y Estructuras de Datos</div>
-          <div class="exp-desc" data-lang="en">Tutored 50+ students in C: dynamic memory, linked lists, queues, stacks, hash tables, trees, and graphs. Guided complexity analysis and debugging.</div>
-          <div class="exp-desc" data-lang="es">Tutorié a 50+ estudiantes en C: memoria dinámica, listas enlazadas, colas, pilas, tablas de hash, árboles y grafos. Guié análisis de complejidad y debugging.</div>
-          <div class="exp-tags"><span class="exp-tag">C</span><span class="exp-tag">Algorithms</span><span class="exp-tag">Data Structures</span></div>
-        </div>
-      </div>
-      <div class="exp-item">
-        <div class="exp-date">Jul – Sep 2019</div>
-        <div class="exp-body">
-          <div class="exp-dot"></div>
-          <div class="exp-company">FNET System</div>
-          <div class="exp-role" data-lang="en">Backend Developer</div>
-          <div class="exp-role" data-lang="es">Desarrollador Backend</div>
-          <div class="exp-desc" data-lang="en">Backend solutions for government systems (police inventory, traffic cameras) using PHP Yii Framework and MySQL.</div>
-          <div class="exp-desc" data-lang="es">Soluciones backend para sistemas gubernamentales (inventario policial, cámaras de tránsito) con PHP Yii Framework y MySQL.</div>
-          <div class="exp-tags"><span class="exp-tag">PHP Yii</span><span class="exp-tag">MySQL</span></div>
+        <div class="value-card highlight reveal delay-5">
+          <div class="icon">💡</div>
+          <h3>Slogan</h3>
+          <p data-en="Knowledge gains value when it's shared."
+             data-es="El conocimiento cobra valor cuando es compartido.">
+             El conocimiento cobra valor cuando es compartido.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="section-inner">
-    <div class="section-label" data-lang="en">Projects</div>
-    <div class="section-label" data-lang="es">Proyectos</div>
-    <h2 class="section-title" data-lang="en">Things I've built</h2>
-    <h2 class="section-title" data-lang="es">Cosas que construí</h2>
-    <div class="projects-grid">
-      <div class="project-card">
-        <div class="project-badge" data-lang="en">Production · TITANPush</div>
-        <div class="project-badge" data-lang="es">Producción · TITANPush</div>
-        <div class="project-title" data-lang="en">Promotions Engine</div>
-        <div class="project-title" data-lang="es">Motor de Promociones</div>
-        <div class="project-problem" data-lang="en">Problem: merchants needed flexible, combinable discount rules at high volume without performance degradation.</div>
-        <div class="project-problem" data-lang="es">Problema: los comercios necesitaban reglas de descuento flexibles y combinables a alto volumen sin degradar el rendimiento.</div>
-        <div class="project-desc" data-lang="en">Cart analysis engine with combinable discount rules, progressive calculations, and real-time validation. Built from scratch and owned end-to-end. Serving 30,000+ merchants across 10+ platforms at ~120ms P95.</div>
-        <div class="project-desc" data-lang="es">Motor de análisis de carrito con reglas de descuentos combinables, cálculos progresivos y validación en tiempo real. Construido desde cero con ownership completo. Sirve a 30.000+ comercios en 10+ plataformas con ~120ms P95.</div>
-        <div class="project-footer">
-          <div class="project-stack"><span>PHP</span><span>TypeScript</span><span>MySQL</span><span>Datadog</span></div>
-        </div>
-      </div>
-      <div class="project-card">
-        <div class="project-badge" data-lang="en">Final Degree Project · UBA</div>
-        <div class="project-badge" data-lang="es">Proyecto Final · UBA</div>
-        <div class="project-title" data-lang="en">Static Analysis Engine</div>
-        <div class="project-title" data-lang="es">Motor de Análisis Estático</div>
-        <div class="project-problem" data-lang="en">Problem: developers lack visual tools to understand dependency relationships across large codebases.</div>
-        <div class="project-problem" data-lang="es">Problema: los desarrolladores carecen de herramientas visuales para entender las relaciones de dependencia en codebases grandes.</div>
-        <div class="project-desc" data-lang="en">Multilanguage tool that parses Python and JavaScript source code, constructs dependency graphs, and visualizes them interactively. Integrates LSP for real-time IDE feedback.</div>
-        <div class="project-desc" data-lang="es">Herramienta multilenguaje que parsea código Python y JavaScript, construye grafos de dependencias y los visualiza de forma interactiva. Integra LSP para feedback en tiempo real en IDEs.</div>
-        <div class="project-footer">
-          <div class="project-stack"><span>Svelte</span><span>Cytoscape.js</span><span>Rust</span><span>LSP</span></div>
-          <a href="https://github.com/FrancoSecchi" target="_blank" class="project-link">GitHub ↗</a>
-        </div>
-      </div>
-      <div class="project-card">
-        <div class="project-badge">Freelance · Dumbbell</div>
-        <div class="project-title" data-lang="en">Fitness Platform Architecture</div>
-        <div class="project-title" data-lang="es">Arquitectura Plataforma Fitness</div>
-        <div class="project-problem" data-lang="en">Problem: early-stage mobile app needed a solid architecture foundation before scaling the team.</div>
-        <div class="project-problem" data-lang="es">Problema: una app móvil en etapa temprana necesitaba una base arquitectónica sólida antes de escalar el equipo.</div>
-        <div class="project-desc" data-lang="en">Full architecture for a mobile fitness app: database schema, service communication layer, caching strategy, and team coding standards. Built to scale from day one.</div>
-        <div class="project-desc" data-lang="es">Arquitectura completa para una app móvil de fitness: esquema de base de datos, capa de comunicación entre servicios, estrategia de caché y estándares de código del equipo.</div>
-        <div class="project-footer">
-          <div class="project-stack"><span>React Native</span><span>Supabase</span><span>PostgreSQL</span></div>
-        </div>
-      </div>
+<!-- ===================== Skills ===================== -->
+<section id="skills" class="skills">
+  <div class="wrap">
+    <span class="eyebrow reveal" data-en="Technical Skills" data-es="Habilidades Técnicas">Habilidades Técnicas</span>
+    <h2 class="section-title reveal delay-1" data-en="What I build with" data-es="Con qué construyo">Con qué construyo</h2>
+
+    <div class="skill-grid" id="skill-grid"></div>
+  </div>
+</section>
+
+<!-- ===================== Experience ===================== -->
+<section id="experience" class="experience">
+  <div class="wrap">
+    <span class="eyebrow reveal" data-en="Experience" data-es="Experiencia">Experiencia</span>
+    <h2 class="section-title reveal delay-1" data-en="Where I've worked" data-es="Dónde trabajé">Dónde trabajé</h2>
+    <div class="timeline" id="timeline"></div>
+  </div>
+</section>
+
+<!-- ===================== Projects ===================== -->
+<section id="projects" class="projects">
+  <div class="wrap">
+    <span class="eyebrow reveal" data-en="Projects" data-es="Proyectos">Proyectos</span>
+    <h2 class="section-title reveal delay-1" data-en="Things I've built" data-es="Cosas que construí">Cosas que construí</h2>
+    <div class="project-grid" id="project-grid"></div>
+  </div>
+</section>
+
+<!-- ===================== Contact ===================== -->
+<section id="contact" class="contact">
+  <div class="wrap">
+    <span class="eyebrow reveal" data-en="Contact" data-es="Contacto">Contacto</span>
+    <h2 class="section-title reveal delay-1" data-en="Let's talk" data-es="Hablemos">Hablemos</h2>
+    <p class="contact-sub reveal delay-2"
+      data-en="Open to backend engineering, full-stack, health tech, and scientific computing opportunities — remote or international."
+      data-es="Abierto a oportunidades en backend, full-stack, health tech y computación científica — remoto o internacional.">
+      Abierto a oportunidades en backend, full-stack, health tech y computación científica — remoto o internacional.
+    </p>
+
+    <div class="contact-ctas reveal delay-3">
+      <a class="btn btn-primary" href="https://linkedin.com/in/franco-fabian-secchi-9abb3a173" target="_blank" rel="noopener">LinkedIn <span class="arrow">↗</span></a>
+      <a class="btn btn-outline" href="https://github.com/FrancoSecchi" target="_blank" rel="noopener">GitHub <span class="arrow">↗</span></a>
+      <a class="btn btn-ghost" href="#" id="email-link" onclick="openEmail(event)"><span>✉</span> Email</a>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact">
-  <div class="section-inner">
-    <div class="section-label" data-lang="en">Contact</div>
-    <div class="section-label" data-lang="es">Contacto</div>
-    <h2 class="section-title" data-lang="en">Let's talk</h2>
-    <h2 class="section-title" data-lang="es">Hablemos</h2>
-    <p class="contact-sub" data-lang="en">Open to backend engineering, full-stack, health tech, and scientific computing opportunities — remote or international.</p>
-    <p class="contact-sub" data-lang="es">Abierto a oportunidades en backend, full-stack, health tech y computación científica — remoto o internacional.</p>
-    <div class="contact-links">
-      <a href="https://linkedin.com/in/franco-fabian-secchi-9abb3a173" target="_blank" class="contact-link linkedin">LinkedIn ↗</a>
-      <a href="https://github.com/FrancoSecchi" target="_blank" class="contact-link github">GitHub ↗</a>
-      <a href="#" class="contact-link email" id="email-link" onclick="openEmail(event)">✉ Email</a>
-    </div>
-    <div class="cv-download">
-      <div class="cv-label" data-lang="en">Download CV</div>
-      <div class="cv-label" data-lang="es">Descargar CV</div>
-      <div class="cv-buttons">
-        <a href="#" class="cv-btn" data-lang="en">↓ CV in English</a>
-        <a href="#" class="cv-btn" data-lang="es">↓ CV en inglés</a>
-        <a href="#" class="cv-btn" data-lang="en">↓ CV en español</a>
-        <a href="#" class="cv-btn" data-lang="es">↓ CV en español</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer><p>Franco Fabian Secchi · Buenos Aires, Argentina · 2026</p></footer>
+<footer>
+  <p data-en="Knowledge gains value when it's shared." data-es="El conocimiento cobra valor cuando es compartido.">
+    El conocimiento cobra valor cuando es compartido.
+  </p>
+  <p>Franco Fabian Secchi · Buenos Aires, Argentina · 2026</p>
+</footer>
 
 <script>
-  function setLang(lang) {
-    document.body.className = 'lang-' + lang;
-    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-    document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
-    document.documentElement.lang = lang;
-  }
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const t = document.querySelector(a.getAttribute('href'));
-      if (t) { e.preventDefault(); window.scrollTo({ top: t.offsetTop - 72, behavior: 'smooth' }); }
+/* ===================== Data ===================== */
+const SKILLS = [
+  { title: { en: "Languages", es: "Lenguajes" }, tags: [
+    ["PHP",1],["TypeScript",1],["JavaScript",1],["SQL",0],["C",0],["Rust",0],["Python",0]
+  ]},
+  { title: { en: "Frontend & Mobile", es: "Frontend & Mobile" }, tags: [
+    ["React",1],["React Native",1],["Svelte",0],["HTML5",0],["CSS3",0]
+  ]},
+  { title: { en: "Backend & APIs", es: "Backend & APIs" }, tags: [
+    ["REST APIs",1],["PHP Yii",1],["FastAPI",0],["Node.js",0]
+  ]},
+  { title: { en: "Databases", es: "Bases de Datos" }, tags: [
+    ["PostgreSQL",1],["MySQL",1],["Supabase",0],["Redis",0]
+  ]},
+  { title: { en: "Tools & Infra", es: "Herramientas e Infra" }, tags: [
+    ["Git",1],["Datadog",1],["Docker",0],["GitHub Actions",0],["AWS",0]
+  ]},
+  { title: { en: "CS Fundamentals", es: "Fundamentos CS" }, tags: [
+    ["Data Structures",1],["Algorithms",0],["System Design",0],["Concurrency",0],["Dist. Systems",0]
+  ]},
+];
+
+const EXPERIENCE = [
+  {
+    date: { en: "Sep 2019 – Present", es: "Sep 2019 – Actualidad" },
+    company: "TITANPush",
+    role: { en: "Software Developer", es: "Desarrollador de Software" },
+    metric: "⚡ ~120ms P95 · 30,000+ merchants · 10+ platforms",
+    desc: {
+      en: "Owned end-to-end development of the Promotions Engine — cart analysis, combinable discount rules, progressive calculations, and real-time validation. Led strategic refactoring of core legacy modules. Designed merchant-facing configuration systems used daily across Tiendanube, Mercadoshops, and Shopify.",
+      es: "Responsable del desarrollo integral del Motor de Promociones — análisis de carrito, reglas de descuentos combinables, cálculos progresivos y validación en tiempo real. Lideré el refactoring estratégico de módulos core. Diseñé sistemas de configuración usados diariamente en Tiendanube, Mercadoshops y Shopify.",
+    },
+    tags: ["PHP","TypeScript","MySQL","REST APIs","Datadog"],
+  },
+  {
+    date: { en: "Feb – Jul 2025", es: "Feb – Jul 2025" },
+    company: "Dumbbell (Freelance)",
+    role: { en: "Software Developer", es: "Desarrollador de Software" },
+    desc: {
+      en: "Architected the full service communication layer for a mobile fitness platform — Supabase, React Native, and React Query with optimized caching. Designed the complete PostgreSQL schema and internal coding standards.",
+      es: "Arquitecté la capa completa de comunicación entre servicios para una plataforma móvil de fitness — Supabase, React Native y React Query con caché optimizada. Diseñé el esquema completo de PostgreSQL y los estándares internos de código.",
+    },
+    tags: ["React Native","TypeScript","Supabase","PostgreSQL","React Query"],
+  },
+  {
+    date: { en: "Sep 2021 – Aug 2023", es: "Sep 2021 – Ago 2023" },
+    company: "UBA — Facultad de Ingeniería",
+    role: {
+      en: "Teaching Assistant — Algorithms & Data Structures",
+      es: "Ayudante de Cátedra — Algoritmos y Estructuras de Datos",
+    },
+    desc: {
+      en: "Tutored 50+ students in C: dynamic memory, linked lists, queues, stacks, hash tables, trees, and graphs. Guided complexity analysis and debugging.",
+      es: "Tutorié a 50+ estudiantes en C: memoria dinámica, listas enlazadas, colas, pilas, tablas de hash, árboles y grafos. Guié análisis de complejidad y debugging.",
+    },
+    tags: ["C","Algorithms","Data Structures"],
+  },
+  {
+    date: { en: "Jul – Sep 2019", es: "Jul – Sep 2019" },
+    company: "FNET System",
+    role: { en: "Backend Developer", es: "Desarrollador Backend" },
+    desc: {
+      en: "Backend solutions for government systems (police inventory, traffic cameras) using PHP Yii Framework and MySQL.",
+      es: "Soluciones backend para sistemas gubernamentales (inventario policial, cámaras de tránsito) con PHP Yii Framework y MySQL.",
+    },
+    tags: ["PHP Yii","MySQL"],
+  },
+];
+
+const PROJECTS = [
+  {
+    badge: { en: "Production · TITANPush", es: "Producción · TITANPush" },
+    title: { en: "Promotions Engine", es: "Motor de Promociones" },
+    problem: {
+      en: "Problem: merchants needed flexible, combinable discount rules at high volume without performance degradation.",
+      es: "Problema: los comercios necesitaban reglas de descuento flexibles y combinables a alto volumen sin degradar el rendimiento.",
+    },
+    desc: {
+      en: "Cart analysis engine with combinable discount rules, progressive calculations, and real-time validation. Built from scratch and owned end-to-end. Serving 30,000+ merchants across 10+ platforms at ~120ms P95.",
+      es: "Motor de análisis de carrito con reglas de descuentos combinables, cálculos progresivos y validación en tiempo real. Construido desde cero con ownership completo. Sirve a 30.000+ comercios en 10+ plataformas con ~120ms P95.",
+    },
+    stack: ["PHP","TypeScript","MySQL","Datadog"],
+  },
+  {
+    badge: { en: "Final Degree Project · UBA", es: "Proyecto Final · UBA" },
+    title: { en: "Static Analysis Engine", es: "Motor de Análisis Estático" },
+    problem: {
+      en: "Problem: developers lack visual tools to understand dependency relationships across large codebases.",
+      es: "Problema: los desarrolladores carecen de herramientas visuales para entender las relaciones de dependencia en codebases grandes.",
+    },
+    desc: {
+      en: "Multilanguage tool that parses Python and JavaScript source code, constructs dependency graphs, and visualizes them interactively. Integrates LSP for real-time IDE feedback.",
+      es: "Herramienta multilenguaje que parsea código Python y JavaScript, construye grafos de dependencias y los visualiza de forma interactiva. Integra LSP para feedback en tiempo real en IDEs.",
+    },
+    stack: ["Svelte","Cytoscape.js","Rust","LSP"],
+    link: "https://github.com/FrancoSecchi",
+  },
+  {
+    badge: { en: "Freelance · Dumbbell", es: "Freelance · Dumbbell" },
+    title: { en: "Fitness Platform Architecture", es: "Arquitectura Plataforma Fitness" },
+    problem: {
+      en: "Problem: early-stage mobile app needed a solid architecture foundation before scaling the team.",
+      es: "Problema: una app móvil en etapa temprana necesitaba una base arquitectónica sólida antes de escalar el equipo.",
+    },
+    desc: {
+      en: "Full architecture for a mobile fitness app: database schema, service communication layer, caching strategy, and team coding standards. Built to scale from day one.",
+      es: "Arquitectura completa para una app móvil de fitness: esquema de base de datos, capa de comunicación entre servicios, estrategia de caché y estándares de código del equipo.",
+    },
+    stack: ["React Native","Supabase","PostgreSQL"],
+  },
+];
+
+/* ===================== Render ===================== */
+let currentLang = "es";
+
+function renderSkills() {
+  const el = document.getElementById("skill-grid");
+  el.innerHTML = SKILLS.map((c, i) => `
+    <div class="skill-card reveal delay-${Math.min(i+1,6)}">
+      <h3>${c.title[currentLang]}</h3>
+      <div class="skill-tags">
+        ${c.tags.map(([n,h]) => `<span class="skill-tag${h?' hot':''}">${n}</span>`).join("")}
+      </div>
+    </div>
+  `).join("");
+}
+
+function renderExperience() {
+  const el = document.getElementById("timeline");
+  el.innerHTML = EXPERIENCE.map((e, i) => `
+    <div class="tl-item reveal delay-${Math.min(i+1,6)}">
+      <div class="tl-date">${e.date[currentLang]}</div>
+      <div class="tl-body">
+        <div class="tl-company">${e.company}</div>
+        <h3 class="tl-role">${e.role[currentLang]}</h3>
+        ${e.metric ? `<div class="tl-metric">${e.metric}</div>` : ""}
+        <p class="tl-desc">${e.desc[currentLang]}</p>
+        <div class="tl-tags">${e.tags.map(t=>`<span class="tl-tag">${t}</span>`).join("")}</div>
+      </div>
+    </div>
+  `).join("");
+}
+
+function renderProjects() {
+  const el = document.getElementById("project-grid");
+  el.innerHTML = PROJECTS.map((p, i) => `
+    <div class="project-card reveal delay-${Math.min(i+1,6)}">
+      <div class="project-badge">${p.badge[currentLang]}</div>
+      <h3 class="project-title">${p.title[currentLang]}</h3>
+      <p class="project-problem">${p.problem[currentLang]}</p>
+      <p class="project-desc">${p.desc[currentLang]}</p>
+      <div class="project-footer">
+        <div class="project-stack">${p.stack.map(s=>`<span class="stack-tag">${s}</span>`).join("")}</div>
+        ${p.link ? `<a class="project-link" href="${p.link}" target="_blank" rel="noopener">GitHub ↗</a>` : ""}
+      </div>
+    </div>
+  `).join("");
+}
+
+/* ===================== i18n switch ===================== */
+function applyLanguage(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang;
+
+  // simple data-en/data-es swaps
+  document.querySelectorAll("[data-en][data-es]").forEach(node => {
+    const val = node.getAttribute("data-" + lang);
+    if (val != null) node.textContent = val;
+  });
+
+  // block toggles
+  document.querySelectorAll("[data-lang-block]").forEach(block => {
+    block.hidden = block.getAttribute("data-lang-block") !== lang;
+  });
+
+  // toggle buttons
+  document.querySelectorAll("#lang-toggle button").forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.lang === lang);
+  });
+
+  // re-render dynamic sections
+  renderSkills();
+  renderExperience();
+  renderProjects();
+
+  // re-observe new dynamic reveal elements
+  observeReveals();
+}
+
+/* ===================== Scroll effects ===================== */
+const nav = document.getElementById("nav");
+function onScroll() { nav.classList.toggle("scrolled", window.scrollY > 16); }
+window.addEventListener("scroll", onScroll, { passive: true });
+onScroll();
+
+/* ===================== Reveal on scroll ===================== */
+let io;
+function observeReveals() {
+  if (io) io.disconnect();
+  io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("in");
+        io.unobserve(entry.target);
+      }
     });
-  });
-</script>
-<script>
-  // Email ofuscado — los bots leen HTML estático, no ejecutan JS
-  // Tu email real va acá partido en partes para que no aparezca en texto plano
-  function openEmail(e) {
-    e.preventDefault();
-    var u = "francofabiansecchi";        // usuario — cambiá esto
-    var d = "gmail.com";            // dominio — cambiá esto
-    window.location.href = "mailto:" + u + "@" + d;
-  }
-  // Honeypot: si un bot lee el DOM buscando "mailto:", no encuentra nada
-  document.getElementById("email-link").addEventListener("mouseenter", function() {
-    this.title = "Email";
-  });
+  }, { threshold: 0.12, rootMargin: "0px 0px -60px 0px" });
+  document.querySelectorAll(".reveal:not(.in)").forEach(el => io.observe(el));
+}
+
+/* ===================== Smooth in-page navigation ===================== */
+document.addEventListener("click", (e) => {
+  const link = e.target.closest('a[href^="#"]');
+  if (!link) return;
+  const id = link.getAttribute("href").slice(1);
+  if (!id) return;
+  const target = document.getElementById(id);
+  if (!target) return;
+  e.preventDefault();
+  const top = target.getBoundingClientRect().top + window.scrollY - 64;
+  window.scrollTo({ top, behavior: "smooth" });
+});
+
+/* ===================== Language toggle wiring ===================== */
+document.getElementById("lang-toggle").addEventListener("click", (e) => {
+  const btn = e.target.closest("button[data-lang]");
+  if (!btn) return;
+  applyLanguage(btn.dataset.lang);
+});
+
+/* ===================== Init ===================== */
+applyLanguage("es");
+observeReveals();
+
+/* ===================== Email ofuscado ===================== */
+function openEmail(e) {
+  e.preventDefault();
+  var u = "francofabiansecchi";
+  var d = "gmail.com";
+  window.location.href = "mailto:" + u + "@" + d;
+}
 </script>
 </body>
 </html>
