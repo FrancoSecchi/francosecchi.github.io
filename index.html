@@ -3,8 +3,54 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Franco Fabian Secchi — Ingeniero de Software</title>
-<meta name="description" content="Portfolio de Franco Fabian Secchi, ingeniero de software backend con 6+ años de experiencia en eCommerce, mobile y SaaS. Buenos Aires, Argentina." />
+<title>Franco Fabian Secchi — Software Engineer | Backend · Health Tech · Buenos Aires</title>
+
+<!-- SEO básico -->
+<meta name="description" content="Portfolio de Franco Fabian Secchi, ingeniero de software backend con 6+ años de experiencia. PHP, TypeScript, React, React Native. Buenos Aires, Argentina. Orientado a health tech y bioinformática." />
+<meta name="keywords" content="Franco Secchi, software engineer, backend developer, PHP, TypeScript, React, React Native, Buenos Aires, Argentina, health tech, bioinformatics" />
+<meta name="author" content="Franco Fabian Secchi" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://francosecchi.github.io/" />
+
+<!-- Open Graph (LinkedIn, WhatsApp, Slack, Facebook) -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://francosecchi.github.io/" />
+<meta property="og:title" content="Franco Fabian Secchi — Software Engineer" />
+<meta property="og:description" content="Ingeniero backend con 6+ años de experiencia en eCommerce, mobile y SaaS. Orientándome hacia health tech y computación científica." />
+<meta property="og:locale" content="es_AR" />
+<meta property="og:locale:alternate" content="en_US" />
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Franco Fabian Secchi — Software Engineer" />
+<meta name="twitter:description" content="Ingeniero backend con 6+ años de experiencia. PHP, TypeScript, React Native. Buenos Aires, Argentina." />
+
+<!-- Schema.org — Person -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Franco Fabian Secchi",
+  "jobTitle": "Software Engineer",
+  "description": "Ingeniero de software backend con 6+ años de experiencia en eCommerce, mobile y SaaS. Orientado a health tech y bioinformática.",
+  "url": "https://francosecchi.github.io/",
+  "sameAs": [
+    "https://linkedin.com/in/franco-fabian-secchi-9abb3a173",
+    "https://github.com/FrancoSecchi"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Buenos Aires",
+    "addressCountry": "AR"
+  },
+  "knowsAbout": ["PHP", "TypeScript", "React", "React Native", "C", "PostgreSQL", "MySQL", "Bioinformatics", "Health Tech"],
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "Universidad de Buenos Aires",
+    "sameAs": "https://www.uba.ar"
+  }
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -159,8 +205,12 @@
   .btn-outline:hover { border-color: var(--cream); background: rgba(246,242,231,.08); }
   .btn-ghost { background: rgba(75,107,90,.75); color: var(--cream); backdrop-filter: blur(6px); }
   .btn-ghost:hover { background: var(--forest); }
-  .btn .arrow { display: inline-block; transition: transform .2s; }
+  .btn .arrow { display: inline-flex; align-items: center; transition: transform .2s; }
+  .btn .arrow svg { width: 0.95rem; height: 0.95rem; }
   .btn:hover .arrow { transform: translate(2px,-2px); }
+  .btn svg { width: 1rem; height: 1rem; }
+  .cv-btn svg { width: 0.9rem; height: 0.9rem; }
+  .project-link svg { width: 0.85rem; height: 0.85rem; }
 
   .hero-stats {
     margin-top: 2.5rem; padding-top: 1.5rem;
@@ -201,7 +251,13 @@
     transition: transform .2s, box-shadow .2s;
   }
   .value-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,.06); }
-  .value-card .icon { font-size: 1.35rem; }
+  .value-card .icon { 
+    display: flex; align-items: center; justify-content: center;
+    width: 2.25rem; height: 2.25rem; border-radius: 0.5rem;
+    background: rgba(75,107,90,.12); color: var(--forest);
+    margin-bottom: 0.25rem;
+  }
+  .value-card .icon svg { display: block; }
   .value-card h3 { font-family: var(--font-sans); font-size: 0.9rem; font-weight: 600; color: var(--fg); margin-top: 0.5rem; }
   .value-card p { margin-top: 0.4rem; font-size: 0.87rem; color: rgba(30,42,36,.8); line-height: 1.55; }
   .value-card.highlight { background: rgba(212,180,131,.12); border-color: rgba(212,180,131,.4); }
@@ -350,8 +406,8 @@
         <li><a href="#contact" data-en="Contact" data-es="Contacto">Contacto</a></li>
       </ul>
       <div class="lang-toggle" id="lang-toggle">
-        <button data-lang="en">EN</button>
         <button data-lang="es" class="active">ES</button>
+        <button data-lang="en">EN</button>
       </div>
     </div>
   </div>
@@ -380,9 +436,9 @@
       </p>
 
       <div class="hero-ctas reveal delay-4">
-        <a class="btn btn-primary" href="https://linkedin.com/in/franco-fabian-secchi-9abb3a173" target="_blank" rel="noopener">LinkedIn <span class="arrow">↗</span></a>
-        <a class="btn btn-outline" href="https://github.com/FrancoSecchi" target="_blank" rel="noopener">GitHub <span class="arrow">↗</span></a>
-        <a class="btn btn-ghost" href="#contact"><span>✉</span><span data-en="Get in touch" data-es="Contactame">Contactame</span></a>
+        <a class="btn btn-primary" href="https://linkedin.com/in/franco-fabian-secchi-9abb3a173" target="_blank" rel="noopener">LinkedIn <span class="arrow"><svg xmlns="http://www.w3.org/2000/svg" width="1.25rem" height="1.25rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a>
+        <a class="btn btn-outline" href="https://github.com/FrancoSecchi" target="_blank" rel="noopener">GitHub <span class="arrow"><svg xmlns="http://www.w3.org/2000/svg" width="1.25rem" height="1.25rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a>
+        <a class="btn btn-ghost" href="#contact"><svg xmlns="http://www.w3.org/2000/svg" width="1.25rem" height="1.25rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><span data-en="Get in touch" data-es="Contactame">Contactame</span></a>
       </div>
 
       <div class="hero-stats reveal delay-5">
@@ -391,12 +447,12 @@
           <div class="stat-label" data-en="Years in production" data-es="Años en producción">Años en producción</div>
         </div>
         <div>
-          <div class="stat-num">30k+</div>
-          <div class="stat-label" data-en="Merchants served" data-es="Comercios activos">Comercios activos</div>
+          <div class="stat-num">3</div>
+          <div class="stat-label" data-en="Companies worked at" data-es="Empresas en las que trabajé">Empresas en las que trabajé</div>
         </div>
         <div>
-          <div class="stat-num">~120ms</div>
-          <div class="stat-label">P95 latency</div>
+          <div class="stat-num">50+</div>
+          <div class="stat-label" data-en="Tutored students" data-es="Estudiantes mentoreados">Estudiantes mentoreados</div>
         </div>
       </div>
     </div>
@@ -446,46 +502,50 @@
       <div class="about-text reveal delay-2">
         <!-- ES -->
         <div data-lang-block="es">
-          <p>Durante mi carrera no me paré a pensar qué iba a hacer después de ella, me faltaban muchas materias importantes que ver, pero ahora que me encuentro al final, me surgió esa pregunta <em>¿Qué quiero hacer de mi vida?</em> No me imagino estar 40 años de mi vida en un ecommerce o haciendo páginas web. Al final del día eso no me llenaría el <em>alma</em>. Entonces buscando más áreas y caminos, llegué a una conclusión: <em>quiero hacer algo que le haga bien a alguien.</em> Si algo que hice terminó mejorándole la vida a alguien que lo necesita, al final del día me voy a sentir satisfecho.</p>
-          <p>Eso fue lo que me llevó hacia el cruce entre software y medicina. Llevo 6+ años construyendo sistemas en producción en <strong>TITANPush</strong> — motores de alto tráfico, lógica de negocio compleja e infraestructura a escala real. Y llegué a creer que la misma disciplina que hace confiables las plataformas de eCommerce puede ayudar a investigadores, médicos y pacientes.</p>
-          <p>Actualmente estoy terminando la carrera de <strong>Ingeniería Informática en la UBA</strong> y estudiando bioinformática — explorando cómo los métodos computacionales pueden resolver problemas en biología molecular y medicina clínica.</p>
+          <p>Durante mi carrera no me paré a pensar qué iba a hacer después de ella — me faltaban muchas materias importantes por ver. Pero ahora que me encuentro al final, me surgió esa pregunta: <em>¿qué quiero hacer de mi vida?</em></p>
+          <p>No me imagino estar 40 años en un ecommerce o haciendo páginas web. Puedo trabajar en una corporativa grande — eso me llenaría los cuatro platos de comida del día — pero al final del día eso no me llenaría el <em>alma</em>. Entonces, buscando más áreas y caminos, llegué a la conclusión de que mi norte es uno: <em>quiero hacer algo que le haga bien a alguien.</em> No el hacer más millonario a un multimillonario, sino que si algo que hice o en lo que aporté terminó mejorándole la vida o haciéndosela más fácil a alguien que lo necesita, al final del día me voy a sentir satisfecho.</p>
+          <p>Eso fue lo que me llevó hacia el cruce entre software y medicina. Llevo 6+ años construyendo sistemas en producción en <strong>TITANPush</strong> — motores de alto tráfico, lógica de negocio compleja e infraestructura a escala real. Y llegué a creer que la misma disciplina de ingeniería que hace confiables las plataformas de eCommerce puede ayudar a investigadores, médicos y pacientes a tener mejores herramientas.</p>
+          <p>Actualmente estoy terminando la carrera de <strong>Ingeniería Informática en la UBA</strong> y estudiando bioinformática — explorando cómo los métodos computacionales pueden resolver problemas en biología molecular y medicina clínica. Es un camino que recién empieza, pero la dirección es clara.</p>
+          <p>Más allá de mi carrera como desarrollador, me apasiona dar clases — poder transmitir lo que sé a alguien que no lo sabe, y ver el brillo en sus ojos cuando entiende el tema. Considero que la enseñanza es un pilar fundamental en la vida: uno puede tener mucha información y conocimiento, pero si no se lo enseña a nadie, vivió y murió en uno, sin saber cómo alguien más pudo haber usado ese conocimiento. <em>El conocimiento cobra valor cuando es compartido.</em></p>
         </div>
         <!-- EN -->
         <div data-lang-block="en" hidden>
-          <p>After exploring many paths, I arrived at a simple north: <em>I want to do something that genuinely helps someone.</em> Not in an abstract way — in the kind of way where you can trace a line from the code you wrote to a real person whose life is a little better.</p>
-          <p>That's what led me toward the intersection of software and medicine. I've spent 6+ years building production systems at <strong>TITANPush</strong> — working on high-load engines, complex business logic, and real-scale infrastructure. The same engineering discipline that makes eCommerce reliable can help researchers, doctors, and patients get better tools.</p>
-          <p>I'm currently completing my <strong>Computer Engineering degree at UBA</strong> and studying bioinformatics — exploring how computational methods can solve problems in molecular biology and clinical medicine.</p>
+          <p>Throughout my degree I never stopped to think about what I'd do after finishing it — there were still too many important subjects ahead. But now that I find myself near the end, the question finally hit me: <em>what do I actually want to do with my life?</em></p>
+          <p>I can't picture spending 40 years in eCommerce or building web pages. I could work at a big corporation — that would put food on the table — but at the end of the day it wouldn't fill my <em>soul</em>. So after exploring many paths, I arrived at a simple north: <em>I want to do something that genuinely helps someone.</em> Not making a billionaire richer, but something where I can trace a line from what I built to a real person whose life got a little easier. That's what would make me feel satisfied.</p>
+          <p>That's what led me toward the intersection of software and medicine. I've spent 6+ years building production systems at <strong>TITANPush</strong> — high-load engines, complex business logic, real-scale infrastructure. The same engineering discipline that makes eCommerce platforms reliable can help researchers, doctors, and patients get better tools.</p>
+          <p>I'm currently completing my <strong>Computer Engineering degree at UBA</strong> and studying bioinformatics — exploring how computational methods can solve problems in molecular biology and clinical medicine. It's early, but the direction is clear.</p>
+          <p>Beyond my career as a developer, I'm passionate about teaching — about transmitting what I know to someone who doesn't know it yet, and seeing that spark in their eyes when it clicks. I believe teaching is a fundamental pillar of life: you can hold a tremendous amount of knowledge, but if you never share it, it lives and dies with you, and the world never gets to see what someone else could have done with it. <em>Knowledge gains value when it's shared.</em></p>
         </div>
       </div>
 
       <div class="about-cards">
         <div class="value-card reveal delay-2">
-          <div class="icon">🔬</div>
+          <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1.25rem" height="1.25rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18h8"/><path d="M3 21h18"/><path d="M14 21v-4a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v4"/><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21V7l-5-4H6a2 2 0 0 0-2 2v10.5"/></svg></div>
           <h3 data-en="Exploring bioinformatics" data-es="Explorando bioinformática">Explorando bioinformática</h3>
           <p data-en="Studying computational biology at UBA Exactas. In contact with research groups working at the intersection of computing and clinical medicine."
              data-es="Estudiando biología computacional en Exactas UBA. En contacto con grupos de investigación que trabajan en el cruce entre computación y medicina clínica.">
              Estudiando biología computacional en Exactas UBA. En contacto con grupos de investigación que trabajan en el cruce entre computación y medicina clínica.</p>
         </div>
         <div class="value-card reveal delay-3">
-          <div class="icon">🏗️</div>
+          <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1.25rem" height="1.25rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg></div>
           <h3 data-en="Engineering mindset" data-es="Mentalidad de ingeniería">Mentalidad de ingeniería</h3>
           <p data-en="I care about systems that work at scale, code that others can maintain, and products that solve real problems."
              data-es="Me importan los sistemas que funcionan a escala, el código que otros pueden mantener y los productos que resuelven problemas reales.">
              Me importan los sistemas que funcionan a escala, el código que otros pueden mantener y los productos que resuelven problemas reales.</p>
         </div>
         <div class="value-card reveal delay-4">
-          <div class="icon">🌎</div>
+          <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1.25rem" height="1.25rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></div>
           <h3 data-en="Remote-first, 6 years" data-es="Remote-first desde hace 6 años">Remote-first desde hace 6 años</h3>
           <p data-en="Experienced in async collaboration, distributed teams, and delivering without constant oversight. English C1."
              data-es="Con experiencia en colaboración asíncrona, equipos distribuidos y entrega autónoma. Inglés C1.">
              Con experiencia en colaboración asíncrona, equipos distribuidos y entrega autónoma. Inglés C1.</p>
         </div>
         <div class="value-card highlight reveal delay-5">
-          <div class="icon">💡</div>
-          <h3>Slogan</h3>
+          <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1.25rem" height="1.25rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg></div>
+          <h3 data-en="Teaching &amp; sharing" data-es="Enseñar y compartir">Enseñar y compartir</h3>
           <p data-en="Knowledge gains value when it's shared."
-             data-es="El conocimiento cobra valor cuando es compartido.">
-             El conocimiento cobra valor cuando es compartido.</p>
+             data-es="El conocimiento tiene valor cuando es compartido.">
+             El conocimiento tiene valor cuando es compartido.</p>
         </div>
       </div>
     </div>
@@ -532,9 +592,10 @@
     </p>
 
     <div class="contact-ctas reveal delay-3">
-      <a class="btn btn-primary" href="https://linkedin.com/in/franco-fabian-secchi-9abb3a173" target="_blank" rel="noopener">LinkedIn <span class="arrow">↗</span></a>
-      <a class="btn btn-outline" href="https://github.com/FrancoSecchi" target="_blank" rel="noopener">GitHub <span class="arrow">↗</span></a>
-      <a class="btn btn-ghost" href="#" id="email-link" onclick="openEmail(event)"><span>✉</span> Email</a>
+      <a class="btn btn-primary" href="https://linkedin.com/in/franco-fabian-secchi-9abb3a173" target="_blank" rel="noopener">LinkedIn <span class="arrow"><svg xmlns="http://www.w3.org/2000/svg" width="1.25rem" height="1.25rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a>
+      <a class="btn btn-outline" href="https://github.com/FrancoSecchi" target="_blank" rel="noopener">GitHub <span class="arrow"><svg xmlns="http://www.w3.org/2000/svg" width="1.25rem" height="1.25rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a>      
+      <a class="btn btn-ghost" href="#" id="email-link" onclick="openEmail(event)"><svg xmlns="http://www.w3.org/2000/svg" width="1.25rem" height="1.25rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg> Email</a>
+
     </div>
   </div>
 </section>
@@ -553,10 +614,10 @@ const SKILLS = [
     ["PHP",1],["TypeScript",1],["JavaScript",1],["SQL",0],["C",0],["Rust",0],["Python",0]
   ]},
   { title: { en: "Frontend & Mobile", es: "Frontend & Mobile" }, tags: [
-    ["React",1],["React Native",1],["Svelte",0],["HTML5",0],["CSS3",0]
+    ["React",1],["React Native",1],["Svelte",0],["HTML5",0],["CSS3",0],["LESS",0], ["Jquery",0], ["CoffeeScript",0]
   ]},
   { title: { en: "Backend & APIs", es: "Backend & APIs" }, tags: [
-    ["REST APIs",1],["PHP Yii",1],["FastAPI",0],["Node.js",0]
+    ["REST APIs",1],["PHP Yii",1],["Go",0],["FastAPI",0],["Node.js",0],['tanstack', 0]
   ]},
   { title: { en: "Databases", es: "Bases de Datos" }, tags: [
     ["PostgreSQL",1],["MySQL",1],["Supabase",0],["Redis",0]
@@ -565,7 +626,7 @@ const SKILLS = [
     ["Git",1],["Datadog",1],["Docker",0],["GitHub Actions",0],["AWS",0]
   ]},
   { title: { en: "CS Fundamentals", es: "Fundamentos CS" }, tags: [
-    ["Data Structures",1],["Algorithms",0],["System Design",0],["Concurrency",0],["Dist. Systems",0]
+    ["Data Structures",1],["Algorithms",0],["System Design",0],["Dist. Systems",0]
   ]},
 ];
 
@@ -579,7 +640,7 @@ const EXPERIENCE = [
       en: "Owned end-to-end development of the Promotions Engine — cart analysis, combinable discount rules, progressive calculations, and real-time validation. Led strategic refactoring of core legacy modules. Designed merchant-facing configuration systems used daily across Tiendanube, Mercadoshops, and Shopify.",
       es: "Responsable del desarrollo integral del Motor de Promociones — análisis de carrito, reglas de descuentos combinables, cálculos progresivos y validación en tiempo real. Lideré el refactoring estratégico de módulos core. Diseñé sistemas de configuración usados diariamente en Tiendanube, Mercadoshops y Shopify.",
     },
-    tags: ["PHP","TypeScript","MySQL","REST APIs","Datadog"],
+    tags: ["PHP","TypeScript","MySQL","REST APIs","Datadog", "Go", "CoffeeScript"],
   },
   {
     date: { en: "Feb – Jul 2025", es: "Feb – Jul 2025" },
@@ -642,7 +703,7 @@ const PROJECTS = [
       es: "Herramienta multilenguaje que parsea código Python y JavaScript, construye grafos de dependencias y los visualiza de forma interactiva. Integra LSP para feedback en tiempo real en IDEs.",
     },
     stack: ["Svelte","Cytoscape.js","Rust","LSP"],
-    link: "https://github.com/FrancoSecchi",
+    link: "https://github.com/tpp-grupo-172/lsp-client-server",
   },
   {
     badge: { en: "Freelance · Dumbbell", es: "Freelance · Dumbbell" },
@@ -700,7 +761,7 @@ function renderProjects() {
       <p class="project-desc">${p.desc[currentLang]}</p>
       <div class="project-footer">
         <div class="project-stack">${p.stack.map(s=>`<span class="stack-tag">${s}</span>`).join("")}</div>
-        ${p.link ? `<a class="project-link" href="${p.link}" target="_blank" rel="noopener">GitHub ↗</a>` : ""}
+        ${p.link ? `<a class="project-link" href="${p.link}" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="1.25rem" height="1.25rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.2c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg> GitHub</a>` : ""}
       </div>
     </div>
   `).join("");
@@ -777,17 +838,15 @@ document.getElementById("lang-toggle").addEventListener("click", (e) => {
   applyLanguage(btn.dataset.lang);
 });
 
-/* ===================== Init ===================== */
-applyLanguage("es");
-observeReveals();
-
-/* ===================== Email ofuscado ===================== */
 function openEmail(e) {
   e.preventDefault();
   var u = "francofabiansecchi";
   var d = "gmail.com";
   window.location.href = "mailto:" + u + "@" + d;
 }
+/* ===================== Init ===================== */
+applyLanguage("es");
+observeReveals();
 </script>
 </body>
 </html>
