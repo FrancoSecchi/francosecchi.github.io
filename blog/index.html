@@ -1,0 +1,105 @@
+---
+layout: default
+title: Blog
+# Hidden from the sitemap until the blog link is shown on the home page; remove this line then
+sitemap: false
+description: Avances de mis proyectos personales, ingeniería de software y reflexiones sobre tecnología.
+---
+<span class="eyebrow">Blog</span>
+<h1>Lo que voy construyendo y aprendiendo</h1>
+<p class="meta">Avances de mis proyectos personales, decisiones de diseño y algunas reflexiones sobre tecnología.</p>
+
+{% if site.posts.size > 0 %}
+<div class="filters">
+  <label class="search">
+    <span class="visually-hidden">Buscar posts</span>
+    <input type="search" id="post-search" placeholder="Buscar por título o descripción…" autocomplete="off" />
+  </label>
+
+  {% assign tags = site.tags | sort %}
+  {% if tags.size > 0 %}
+  <div class="tag-filter" role="group" aria-label="Filtrar por etiqueta">
+    <button type="button" class="chip" data-tag="" aria-pressed="true">Todos <span class="count">{{ site.posts.size }}</span></button>
+    {% for tag in tags %}
+    <button type="button" class="chip" data-tag="{{ tag[0] | downcase | escape }}" aria-pressed="false">{{ tag[0] }} <span class="count">{{ tag[1].size }}</span></button>
+    {% endfor %}
+  </div>
+  {% endif %}
+</div>
+
+<p class="meta" id="results-count" aria-live="polite"></p>
+
+<ul class="post-list" id="post-list">
+  {% for post in site.posts %}
+  <li data-tags="{{ post.tags | join: '|' | downcase | escape }}"
+      data-search="{{ post.title | append: ' ' | append: post.description | strip_html | downcase | escape }}">
+    <a class="post-title" href="{{ post.url }}">{{ post.title }}</a>
+    <div class="meta">
+      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%d/%m/%Y" }}</time>
+      {% for tag in post.tags %}<a class="tag" href="/blog/?tag={{ tag | downcase | url_encode }}">{{ tag }}</a>{% endfor %}
+    </div>
+    {% if post.description %}<p>{{ post.description }}</p>{% endif %}
+  </li>
+  {% endfor %}
+</ul>
+
+<p class="empty" id="no-results" hidden>No hay posts que coincidan. <button type="button" class="link-button" id="clear-filters">Limpiar filtros</button></p>
+
+<script>
+(function () {
+  const items = Array.from(document.querySelectorAll("#post-list li"));
+  const chips = Array.from(document.querySelectorAll(".tag-filter .chip"));
+  const search = document.getElementById("post-search");
+  const count = document.getElementById("results-count");
+  const empty = document.getElementById("no-results");
+
+  // Accent-insensitive matching, so "diseno" finds "diseño"
+  const normalize = (text) => text.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().trim();
+
+  const params = new URLSearchParams(window.location.search);
+  let activeTag = (params.get("tag") || "").toLowerCase();
+  search.value = params.get("q") || "";
+
+  function render() {
+    const query = normalize(search.value);
+    let visible = 0;
+
+    items.forEach((item) => {
+      const tags = item.dataset.tags ? item.dataset.tags.split("|") : [];
+      const matchesTag = !activeTag || tags.includes(activeTag);
+      const matchesQuery = !query || normalize(item.dataset.search).includes(query);
+      const show = matchesTag && matchesQuery;
+      item.hidden = !show;
+      if (show) visible++;
+    });
+
+    chips.forEach((chip) => chip.setAttribute("aria-pressed", String(chip.dataset.tag === activeTag)));
+    count.textContent = activeTag || query ? `${visible} de ${items.length} posts` : "";
+    empty.hidden = visible > 0;
+
+    // Keep the filter in the URL so a filtered view can be shared or bookmarked
+    const next = new URLSearchParams();
+    if (activeTag) next.set("tag", activeTag);
+    if (search.value.trim()) next.set("q", search.value.trim());
+    const url = window.location.pathname + (next.toString() ? `?${next}` : "");
+    window.history.replaceState(null, "", url);
+  }
+
+  chips.forEach((chip) => chip.addEventListener("click", () => {
+    activeTag = chip.dataset.tag === activeTag ? "" : chip.dataset.tag;
+    render();
+  }));
+  search.addEventListener("input", render);
+  document.getElementById("clear-filters").addEventListener("click", () => {
+    activeTag = "";
+    search.value = "";
+    render();
+    search.focus();
+  });
+
+  render();
+})();
+</script>
+{% else %}
+<p style="margin-top:2rem">Todavía no hay posts. El primero llega pronto.</p>
+{% endif %}
