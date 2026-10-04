@@ -30,3 +30,5 @@ exclude:
   - vendor/
   - .bundle/
   - Makefile
+  - scripts/
+  - _site_drafts/

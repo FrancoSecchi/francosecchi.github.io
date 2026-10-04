@@ -3,7 +3,7 @@ RUBY_VERSION ?= 3.1.2
 PORT ?= 4000
 JEKYLL = RBENV_VERSION=$(RUBY_VERSION) bundle exec jekyll
 
-.PHONY: help install serve serve-published build clean
+.PHONY: help install serve serve-published build check clean
 
 help: ## List available commands
 	@grep -E '^[a-z-]+:.*## ' $(MAKEFILE_LIST) | awk -F ':.*## ' '{printf "  make %-16s %s\n", $$1, $$2}'
@@ -21,5 +21,8 @@ serve-published: ## Serve locally exactly as it will be published (no drafts)
 build: ## Build the site into _site/
 	$(JEKYLL) build
 
+check: build ## Build the site and run the same checks as CI
+	python3 scripts/check_site.py
+
 clean: ## Remove generated files
-	rm -rf _site .jekyll-cache .jekyll-metadata
+	rm -rf _site _site_drafts .jekyll-cache .jekyll-metadata
