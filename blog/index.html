@@ -1,0 +1,22 @@
+---
+layout: default
+title: Blog
+description: Avances de mis proyectos personales, ingeniería de software y reflexiones sobre tecnología.
+---
+<span class="eyebrow">Blog</span>
+<h1>Lo que voy construyendo y aprendiendo</h1>
+<p class="meta">Avances de mis proyectos personales, decisiones de diseño y algunas reflexiones sobre tecnología.</p>
+
+{% if site.posts.size > 0 %}
+<ul class="post-list">
+  {% for post in site.posts %}
+  <li>
+    <a href="{{ post.url }}">{{ post.title }}</a>
+    <div class="meta"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%d/%m/%Y" }}</time></div>
+    {% if post.description %}<p>{{ post.description }}</p>{% endif %}
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p style="margin-top:2rem">Todavía no hay posts. El primero llega pronto.</p>
+{% endif %}

@@ -1,0 +1,21 @@
+title: Franco Secchi
+description: Blog de Franco Fabian Secchi sobre proyectos personales, ingeniería de software y tecnología.
+url: https://francosecchi.github.io
+lang: es
+author: Franco Fabian Secchi
+permalink: /blog/:year/:title/
+timezone: America/Argentina/Buenos_Aires
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+feed:
+  path: blog/feed.xml
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
+  - .bundle/
