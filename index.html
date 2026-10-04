@@ -390,6 +390,9 @@
   footer p:first-child { font-family: var(--font-display); font-style: italic; font-size: 0.9rem; color: var(--taupe); }
   footer p:last-child { margin-top: 0.5rem; font-size: 0.75rem; color: rgba(184,203,184,.7); }
 </style>
+<!-- Analytics: GoatCounter (cookieless, no consent banner needed) -->
+<script data-goatcounter="https://franco-fabian-secchi.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
 
@@ -888,6 +891,16 @@ function openEmail(e) {
   var d = "gmail.com";
   window.location.href = "mailto:" + u + "@" + d;
 }
+/* ===================== Analytics ===================== */
+// Count CV downloads as GoatCounter events; reads href at click time because the hero button switches with the language
+document.querySelectorAll('a[href$=".pdf"]').forEach(link => {
+  link.addEventListener("click", () => {
+    if (window.goatcounter && window.goatcounter.count) {
+      const file = link.getAttribute("href").split("/").pop();
+      window.goatcounter.count({ path: "download-" + file, title: "CV download", event: true });
+    }
+  });
+});
 /* ===================== Init ===================== */
 applyLanguage("es");
 observeReveals();
