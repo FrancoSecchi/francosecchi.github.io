@@ -448,8 +448,8 @@
           <div class="stat-label" data-en="Years in production" data-es="Años en producción">Años en producción</div>
         </div>
         <div>
-          <div class="stat-num">38K+</div>
-          <div class="stat-label" data-en="Merchants on my promo engine" data-es="Comercios usaron mi motor de promos">Comercios usaron mi motor de promos</div>
+          <div class="stat-num">~150</div>
+          <div class="stat-label" data-en="PRs reviewed per year" data-es="PRs revisados por año">PRs revisados por año</div>
         </div>
         <div>
           <div class="stat-num">3</div>
@@ -475,7 +475,7 @@
         <div class="card-label" data-en="Core stack" data-es="Stack principal">Stack principal</div>
         <div class="tag-row">
           <span class="tag">PHP</span><span class="tag">Yii2</span><span class="tag">JavaScript</span>
-          <span class="tag">TypeScript</span><span class="tag">React Native</span><span class="tag">PostgreSQL</span>
+          <span class="tag">TypeScript</span><span class="tag">React Native</span><span class="tag">MySQL</span>
         </div>
       </div>
       <div class="glass-card reveal delay-4">
@@ -509,7 +509,7 @@
         <div data-lang-block="es">
           <p>Durante mi carrera no me paré a pensar qué iba a hacer después de ella — me faltaban muchas materias importantes por ver. Pero ahora que me encuentro al final, me surgió esa pregunta: <em>¿qué quiero hacer de mi vida?</em></p>
           <p>La respuesta que encontré es simple: <em>quiero construir software que le haga bien a alguien.</em> Si algo que hice, o en lo que aporté, le mejora o le simplifica la vida a quien lo necesita, siento que el trabajo valió la pena.</p>
-          <p>Eso me llevó a interesarme por el cruce entre software y medicina. Llevo 7 años construyendo sistemas en producción en <strong>TITANPush</strong>: motores de alto tráfico, lógica de negocio compleja y un motor de promociones que adoptaron más de 38.000 comercios. Creo que la misma disciplina de ingeniería que hace confiable una plataforma de eCommerce puede darles mejores herramientas a investigadores, médicos y pacientes.</p>
+          <p>Eso me llevó a interesarme por el cruce entre software y medicina. Llevo 7 años construyendo sistemas en producción en <strong>TITANPush</strong>: motores de alto tráfico, lógica de negocio compleja y un motor de promociones que usan miles de comercios de Tiendanube. Creo que la misma disciplina de ingeniería que hace confiable una plataforma de eCommerce puede darles mejores herramientas a investigadores, médicos y pacientes.</p>
           <p>Actualmente estoy terminando la carrera de <strong>Ingeniería Informática en la UBA</strong> y estudiando bioinformática — explorando cómo los métodos computacionales pueden resolver problemas en biología molecular y medicina clínica. Es un camino que recién empieza, pero la dirección es clara.</p>
           <p>Más allá de mi carrera como desarrollador, me apasiona dar clases — poder transmitir lo que sé a alguien que no lo sabe, y ver el brillo en sus ojos cuando entiende el tema. Considero que la enseñanza es un pilar fundamental en la vida: uno puede tener mucha información y conocimiento, pero si no se lo enseña a nadie, vivió y murió en uno, sin saber cómo alguien más pudo haber usado ese conocimiento. <em>El conocimiento tiene valor cuando es compartido.</em></p>
         </div>
@@ -517,7 +517,7 @@
         <div data-lang-block="en" hidden>
           <p>Throughout my degree I never stopped to think about what I'd do after finishing it — there were still too many important subjects ahead. But now that I find myself near the end, the question finally hit me: <em>what do I actually want to do with my life?</em></p>
           <p>The answer I found is simple: <em>I want to build software that genuinely helps someone.</em> If something I built, or contributed to, makes life better or easier for someone who needs it, the work was worth it.</p>
-          <p>That led me toward the intersection of software and medicine. I've spent 7 years building production systems at <strong>TITANPush</strong> — high-load engines, complex business logic, and a promotions engine adopted by 38,000+ merchants. The same engineering discipline that makes an eCommerce platform reliable can give researchers, doctors, and patients better tools.</p>
+          <p>That led me toward the intersection of software and medicine. I've spent 7 years building production systems at <strong>TITANPush</strong> — high-load engines, complex business logic, and a promotions engine used by thousands of Tiendanube merchants. The same engineering discipline that makes an eCommerce platform reliable can give researchers, doctors, and patients better tools.</p>
           <p>I'm currently completing my <strong>Computer Engineering degree at UBA</strong> and studying bioinformatics — exploring how computational methods can solve problems in molecular biology and clinical medicine. It's early, but the direction is clear.</p>
           <p>Beyond my career as a developer, I'm passionate about teaching — about transmitting what I know to someone who doesn't know it yet, and seeing that spark in their eyes when it clicks. I believe teaching is a fundamental pillar of life: you can hold a tremendous amount of knowledge, but if you never share it, it lives and dies with you, and the world never gets to see what someone else could have done with it. <em>Knowledge gains value when it's shared.</em></p>
         </div>
@@ -630,13 +630,13 @@ const SKILLS = [
     ["REST APIs",1],["Yii2",1],["OpenAI API",1],["LLM integration",1],["Prompt engineering",0],["PostgreSQL",1],["MySQL / MariaDB",1],["DynamoDB",0],["Supabase",0],["CakePHP",0]
   ]},
   { title: { en: "Testing", es: "Testing" }, tags: [
-    ["TDD",1],["PHPUnit",1],["Codeception",1],["Gherkin",0],["E2E & acceptance tests",0]
+    ["TDD",1],["PHPUnit",1],["Codeception",1],["Vitest",0],["BDD-style (Given/When/Then)",0],["Code review",0]
   ]},
   { title: { en: "Frontend & Mobile", es: "Frontend & Mobile" }, tags: [
-    ["React Native",1],["TanStack Query",0],["Expo",0],["React",0],["Svelte",0],["HTML5",0],["CSS3",0],["LESS",0]
+    ["React Native",1],["TanStack Query",0],["Expo",0],["Svelte",0],["HTML5",0],["CSS3",0],["LESS",0]
   ]},
   { title: { en: "Tools & Cloud", es: "Herramientas y Cloud" }, tags: [
-    ["Git",1],["GitHub Actions (CI/CD)",1],["Docker",0],["AWS S3",0],["Datadog",0]
+    ["Git",1],["GitHub Actions (CI/CD)",1],["Docker",0],["AWS (S3, DynamoDB)",0],["Datadog",0]
   ]},
   { title: { en: "CS Fundamentals", es: "Fundamentos CS" }, tags: [
     ["Data Structures",1],["Algorithms",1],["Complexity Analysis",0]
@@ -648,12 +648,12 @@ const EXPERIENCE = [
     date: { en: "Sep 2019 – Present", es: "Sep 2019 – Actualidad" },
     company: "TITANPush",
     role: { en: "Software Developer", es: "Desarrollador de Software" },
-    metric: "⚡ ~120ms P95 · 38,000+ merchants · 3 → 12 promo subtypes · 3+ days → <1 per new subtype",
+    metric: "⚡ ~120ms P95 · 9 → 12 promo subtypes · 3+ days → <1 per new subtype · ~150 PRs reviewed/year",
     desc: {
-      en: "One of 3 developers on the team; grew from junior developer to owning core products end-to-end: Banners, Popups, LinkPage, Promotions, and Thematic Campaigns. Owned development of the Promotions Engine — cart analysis, combinable discount rules, progressive calculations, and real-time validation — at ~120ms P95, adopted by 38,000+ Tienda Nube merchants (~15,000 active today). Later re-architected it to scale from 3 to 12 promotion subtypes, replacing two shared analyzers coupled via double dispatch and a general validator full of subtype conditionals with a design where each subtype owns its analyzer, business rules, and views — cutting the time to add a subtype from 3+ days to under 1 and saving ~18 engineering days. Built an AI-powered campaign generator integrating the OpenAI API from PHP, using prompt engineering to turn LLM recommendations into ready-to-launch banners, popups, and push notifications, with per-call cost tracking. Proposed and built an internal promotions audit system, now being extended with a Python data pipeline, and a panel that lists every automated email and when it was triggered. Apply TDD with unit, end-to-end, and acceptance tests (PHPUnit, Codeception, Gherkin).",
-      es: "Uno de 3 desarrolladores del equipo; crecí de desarrollador junior a ser responsable de productos core de punta a punta: Banners, Popups, LinkPage, Promociones y Campañas Temáticas. A cargo del desarrollo del Motor de Promociones — análisis de carrito, reglas de descuento combinables, cálculos progresivos y validación en tiempo real — con ~120ms de latencia P95, adoptado por más de 38.000 comercios de Tienda Nube (~15.000 activos hoy). Luego lo rediseñé para escalar de 3 a 12 subtipos de promoción, reemplazando dos analizadores compartidos acoplados por double dispatch y un validador general lleno de condicionales por subtipo, por un diseño donde cada subtipo tiene su propio analizador, reglas de negocio y vistas: agregar un subtipo pasó de 3+ días a menos de 1, un ahorro de ~18 días de desarrollo. Construí un generador de campañas con IA que integra la OpenAI API desde PHP y usa prompt engineering para convertir las recomendaciones del LLM en banners, popups y notificaciones push listos para publicar, con seguimiento del costo de cada llamada. Propuse y construí un sistema interno de auditoría de promociones, que hoy estoy extendiendo con un pipeline de datos en Python, y un panel que lista cada email automático enviado y cuándo se disparó. Aplico TDD con tests unitarios, end-to-end y de aceptación (PHPUnit, Codeception, Gherkin).",
+      en: "One of 3 developers on the team; grew from junior developer to go-to owner of the promotions system, while also maintaining the rest of the product and reviewing ~150 PRs a year. Co-built the PHP Promotions Engine in 2021 and have been its primary developer since: a real-time cart validation endpoint that Tiendanube calls on every cart change, with combinable discounts (MySQL + DynamoDB), at ~120ms P95. Re-architected its 9 promotion subtypes from a single 800+ line class into per-subtype analyzers and configurations (Template Method, Strategy, Factory), backed by 170+ PHPUnit/Codeception regression tests, cutting the time to add a subtype from 3+ days to under 1; then added 3 more (12 total). Built AI campaign generation on the OpenAI API: prompt-engineered banner and popup HTML generators and a flow that turns one brief into push, banner, and popup campaigns, with per-call token cost tracking. Built WhatsApp campaigns: Meta template management, per-recipient dynamic fields, timezone-aware scheduling, rate-limited sending, and error classification. Drove most of the migration of the legacy storefront script to Tiendanube's NubeSDK as a sandboxed WebWorker app in strict TypeScript, with 247 Vitest tests. Proposed and built promotion visibility tools: a per-cart debugging view and, in progress, a Python audit report (pandas, SQLAlchemy, Plotly).",
+      es: "Uno de 3 desarrolladores del equipo; pasé de desarrollador junior a referente del sistema de promociones; también mantengo el resto del producto y reviso ~150 PRs por año. Co-construí el Motor de Promociones en PHP en 2021 y desde entonces soy su desarrollador principal: un endpoint de validación en tiempo real que Tiendanube llama en cada cambio del carrito, con descuentos combinables (MySQL + DynamoDB), con ~120ms P95. Rediseñé sus 9 subtipos de promoción, pasando de una única clase de más de 800 líneas a analizadores y configuraciones por subtipo (Template Method, Strategy, Factory), con más de 170 tests de regresión en PHPUnit/Codeception; bajé el tiempo para agregar un subtipo de 3+ días a menos de 1 y luego sumé 3 más (12 en total). Construí la generación de campañas con IA sobre la OpenAI API: generadores de HTML para banners y popups con prompt engineering y un flujo que convierte un brief en campañas de push, banner y popup, con registro del costo de tokens por llamada. Construí las campañas de WhatsApp: gestión de plantillas de Meta, campos dinámicos por destinatario, programación según zona horaria, envío con rate limiting y clasificación de errores. Hice la mayor parte de la migración del script de tienda heredado al NubeSDK de Tiendanube como app WebWorker aislada en TypeScript estricto, con 247 tests en Vitest. Propuse y construí herramientas de visibilidad de promociones: una vista de depuración por carrito y, en progreso, un reporte de auditoría en Python (pandas, SQLAlchemy, Plotly).",
     },
-    tags: ["PHP","Yii2","OpenAI API","JavaScript","TypeScript","Python","PostgreSQL","MariaDB","PHPUnit","Codeception","Docker","AWS","Datadog"],
+    tags: ["PHP","Yii2","OpenAI API","JavaScript","TypeScript","NubeSDK","MySQL","DynamoDB","PHPUnit","Codeception","Vitest","Python","Datadog"],
   },
   {
     date: { en: "Feb – Jul 2025", es: "Feb – Jul 2025" },
@@ -700,10 +700,10 @@ const PROJECTS = [
       es: "Problema: los comercios necesitaban reglas de descuento flexibles y combinables a alto volumen sin degradar el rendimiento.",
     },
     desc: {
-      en: "Cart analysis engine with combinable discount rules, progressive calculations, and real-time validation, built on the team's base architecture and owned end-to-end. Later re-architected to scale from 3 to 12 promotion subtypes, cutting the time to add one from 3+ days to under 1. Adopted by 38,000+ Tienda Nube merchants (~15,000 active today) at ~120ms P95.",
-      es: "Motor de análisis de carrito con reglas de descuento combinables, cálculos progresivos y validación en tiempo real, construido sobre la arquitectura base del equipo y con ownership de punta a punta. Luego rediseñado para escalar de 3 a 12 subtipos de promoción, bajando de 3+ días a menos de 1 el tiempo para agregar uno. Adoptado por más de 38.000 comercios de Tienda Nube (~15.000 activos hoy) con ~120ms P95.",
+      en: "Real-time cart validation endpoint that Tiendanube calls on every cart change: combinable discount rules, progressive calculations, and gift-on-cart logic (MySQL + DynamoDB). Co-built in 2021; primary developer since. Re-architected its 9 subtypes into per-subtype analyzers and configurations, cutting the time to add one from 3+ days to under 1, then grew it to 12 subtypes. Backed by 170+ regression tests, at ~120ms P95.",
+      es: "Endpoint de validación en tiempo real que Tiendanube llama en cada cambio del carrito: reglas de descuento combinables, cálculos progresivos y regalos en el carrito (MySQL + DynamoDB). Co-construido en 2021; desde entonces soy su desarrollador principal. Rediseñé sus 9 subtipos en analizadores y configuraciones por subtipo, bajando de 3+ días a menos de 1 el tiempo para agregar uno, y lo llevé a 12 subtipos. Con más de 170 tests de regresión y ~120ms P95.",
     },
-    stack: ["PHP","Yii2","TypeScript","MySQL","Datadog"],
+    stack: ["PHP","Yii2","MySQL","DynamoDB","PHPUnit","Datadog"],
   },
   {
     badge: { en: "Production · TITANPush", es: "Producción · TITANPush" },
@@ -713,10 +713,23 @@ const PROJECTS = [
       es: "Problema: armar una campaña implicaba configurar a mano cada banner, popup y notificación push.",
     },
     desc: {
-      en: "Integrates the OpenAI API from PHP and uses prompt engineering to turn LLM recommendations into ready-to-launch banners, popups, and push notifications. Tracks the cost of every AI call to keep usage under control.",
-      es: "Integra la OpenAI API desde PHP y usa prompt engineering para convertir las recomendaciones del LLM en banners, popups y notificaciones push listos para publicar. Registra el costo de cada llamada a la IA para controlar el gasto.",
+      en: "Prompt-engineered generators that turn a store's branding into ready-to-publish banner and popup HTML, plus a flow that turns one campaign brief into push, banner, and popup campaigns. Integrates the OpenAI API from PHP and tracks the token cost of every call.",
+      es: "Generadores con prompt engineering que convierten la identidad visual de la tienda en HTML de banners y popups listo para publicar, más un flujo que convierte un brief en campañas de push, banner y popup. Integra la OpenAI API desde PHP y registra el costo de tokens de cada llamada.",
     },
     stack: ["PHP","Yii2","OpenAI API","Prompt Engineering"],
+  },
+  {
+    badge: { en: "Production · TITANPush", es: "Producción · TITANPush" },
+    title: { en: "Storefront Script on NubeSDK", es: "Script de tienda en NubeSDK" },
+    problem: {
+      en: "Problem: Tiendanube's NubeSDK runs apps as sandboxed WebWorkers with no DOM access, so the legacy storefront script had to be rebuilt.",
+      es: "Problema: el NubeSDK de Tiendanube ejecuta las apps como WebWorkers aislados, sin acceso al DOM, así que había que reconstruir el script de tienda heredado.",
+    },
+    desc: {
+      en: "Drove most of the migration of banners, popups (exit-intent and scroll triggers), product widgets, and GA4 tracking to a declarative WebWorker app in strict TypeScript, with 247 Vitest tests.",
+      es: "Hice la mayor parte de la migración de banners, popups (con disparadores por salida y scroll), widgets de productos y seguimiento de GA4 a una app WebWorker declarativa en TypeScript estricto, con 247 tests en Vitest.",
+    },
+    stack: ["TypeScript","NubeSDK","Vitest"],
   },
   {
     badge: { en: "Final Degree Project · UBA", es: "Proyecto Final · UBA" },
