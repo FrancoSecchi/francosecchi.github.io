@@ -11,12 +11,14 @@
 <meta name="author" content="Franco Fabian Secchi" />
 <meta name="robots" content="index, follow" />
 <link rel="canonical" href="https://francosecchi.github.io/" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
 
 <!-- Open Graph (LinkedIn, WhatsApp, Slack, Facebook) -->
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://francosecchi.github.io/" />
 <meta property="og:title" content="Franco Fabian Secchi — Full-Stack Software Engineer" />
 <meta property="og:description" content="Desarrollador full-stack con foco en backend y 7 años de experiencia en eCommerce, mobile y SaaS. Interesado en health tech y bioinformática." />
+<meta property="og:image" content="https://francosecchi.github.io/foto.jpg" />
 <meta property="og:locale" content="es_AR" />
 <meta property="og:locale:alternate" content="en_US" />
 
@@ -179,6 +181,11 @@
     display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center;
   }
   @media (min-width: 1024px) { .hero-grid { grid-template-columns: 1fr 1fr; gap: 4rem; } }
+  .hero-photo {
+    display: block; width: 96px; height: 96px; border-radius: 50%; object-fit: cover;
+    border: 2px solid var(--taupe); margin-bottom: 1.25rem;
+  }
+  @media (min-width: 768px) { .hero-photo { width: 120px; height: 120px; } }
   .hero-eyebrow { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; color: var(--sage); }
   .hero h1 {
     margin-top: 1.25rem;
@@ -422,6 +429,7 @@
 <section id="home" class="hero">
   <div class="hero-grid">
     <div>
+      <img class="hero-photo reveal" src="foto.jpg" alt="Franco Fabian Secchi" width="120" height="120" />
       <span class="hero-eyebrow reveal"
         data-en="Full-Stack Software Engineer · Buenos Aires, Argentina"
         data-es="Desarrollador Full-Stack · Buenos Aires, Argentina">Desarrollador Full-Stack · Buenos Aires, Argentina</span>
