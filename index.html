@@ -763,6 +763,20 @@ const PROJECTS = [
     },
     stack: ["React Native","Supabase","PostgreSQL","TanStack Query"],
   },
+  {
+    badge: { en: "In progress · Personal project", es: "En progreso · Proyecto personal" },
+    title: { en: "Remote Patient Monitoring API", es: "API de Monitoreo Remoto de Pacientes" },
+    problem: {
+      en: "Problem: care teams following chronic patients at home need to know quickly when a reading goes out of range.",
+      es: "Problema: los equipos de salud que siguen a pacientes crónicos en su casa necesitan enterarse rápido cuando una medición se sale de rango.",
+    },
+    desc: {
+      en: "Backend where devices send readings (blood pressure, glucose, heart rate), checked against per-patient limits to raise alerts for the care team. v1 scope: role-based access (coordinator, doctor, nurse), per-patient history and averages, and device ingestion with duplicate detection. Synthetic data only; a learning project, not a medical device.",
+      es: "Backend donde los dispositivos envían mediciones (presión, glucosa, frecuencia cardíaca) que se comparan con los límites de cada paciente para generar alertas al equipo de salud. Alcance de la v1: acceso por roles (coordinador, médico, enfermero), historial y promedios por paciente, e ingesta de dispositivos con detección de duplicados. Solo datos sintéticos; es un proyecto de aprendizaje, no un dispositivo médico.",
+    },
+    stack: ["Python","FastAPI","SQLAlchemy","PostgreSQL","pytest","Docker"],
+    link: "https://github.com/FrancoSecchi/remote-patient-monitoring-api",
+  },
 ];
 
 /* ===================== Render ===================== */
